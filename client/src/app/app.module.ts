@@ -7,6 +7,7 @@ import { PruebaComponent } from './prueba/prueba.component';
 import { ViajarComponent } from './viajar/viajar.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { ProfesorComponent } from './profesor/profesor.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     PruebaComponent,
     ViajarComponent,
-    LoginComponent
+    LoginComponent,
+    ProfesorComponent
   ],
   imports: [
     BrowserModule,

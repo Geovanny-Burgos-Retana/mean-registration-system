@@ -18,6 +18,12 @@ export class LoginComponent implements OnInit {
   	this.router.navigate(['quiero-viajar']);
     console.log("hola esto es un mensaje");
   }
+
+  cargarProfesor(){
+    this.router.navigate(['cargar-profesor']);
+    console.log("hola muchahos!!!!!");
+
+  }
   
 
 }
