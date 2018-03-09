@@ -13,6 +13,10 @@ const routes: Routes = [
       {
         path:'quiero-viajar',
         component: ViajarComponent
+      },
+      {
+        path:'profesor',
+        component: PruebaComponent
       }
 
   ];
