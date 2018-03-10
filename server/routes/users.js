@@ -12,7 +12,43 @@ router.get('/users', (req, res, next) => {
 
 // Single User
 router.get('/users/:name/:pass', function(req, res, next){
-    db.usuario.findOne({nombre: req.params.name, contraseña: req.params.pass}, function(err, usuario){
+    db.usuario.findOne({usuario: req.params.name, contrasena: req.params.pass}, function(err, usuario){
+        if(err){
+            res.send(err);
+        }
+        res.json(usuario);
+    });
+});
+
+// Add a User
+router.post('/users', (req, res, next) => {
+    const user = req.body;
+    console.log("usuario "+user.usuario);
+    console.log("contrasena "+user.contrasena);
+    console.log("universidad "+user.universidad);
+    console.log("escuela "+user.escuela);
+    console.log("tipo "+user.tipo);
+    console.log("nombre "+user.nombre);
+    console.log("carnet "+user.carnet);
+    console.log("carrera "+user.carrera);
+
+
+
+    if(!(user.usuario) || !(user.contrasena) || !(user.universidad) || !(user.escuela) || !(user.tipo) || !(user.nombre) || !(user.carnet) ) {
+        res.status(400).json({
+            'error': 'Bad Data'
+        });
+    } else {
+        db.usuario.save(user, (err, user) => {
+            if (err) return next(err);
+            res.json(user);
+        });
+    }
+});
+
+// Single User
+router.get('/users/universidades', function(req, res, next){
+    db.universidad.find((err, usuario) => {
         if(err){
             res.send(err);
         }
