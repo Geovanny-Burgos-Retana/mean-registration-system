@@ -97,3 +97,21 @@ body {
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+
+.btn-addSub {
+	background-color: #7C97C2;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #7C97C2;
+}
+.btn-addSub:hover,
+.btn-addSub:focus {
+	color: #fff;
+	background-color: #437AD0;
+	border-color: #437AD0;
+}
