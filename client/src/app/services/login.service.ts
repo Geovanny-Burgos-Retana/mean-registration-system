@@ -4,7 +4,6 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
 
 import { User } from '../objects/Usuario';
-import { Universidad } from '../objects/Universidad';
 
 @Injectable()
 export class LoginService {
@@ -26,10 +25,5 @@ export class LoginService {
   	}
 
 
-  	getUniveridades():Observable<Universidad[]>{
-  		console.log(this.http.get<Universidad[]>(`${this.domain}/api/users/universidades`)
-  			.map(res => res));
-  		return this.http.get<Universidad[]>(`${this.domain}/api/users/universidades`)
-  			.map(res => res);
-  	}
+  	
 }
