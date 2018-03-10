@@ -12,10 +12,20 @@ const routes: Routes = [
         component: LoginComponent,
       },
       {
+
           path: 'cargar-profesor',
           component: ProfesorComponent
         //path:'quiero-viajar',
         //component: ViajarComponent
+      },
+      {
+        path:'quiero-viajar',
+        component: ViajarComponent
+      },
+      {
+        path:'profesor',
+        component: PruebaComponent
+
       }
 
   ];
