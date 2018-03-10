@@ -1,9 +1,11 @@
 export class User{
 	_id?: String;
-	institutcion: String;
+	usuario: String;
+	contrasena: String;
+	universidad: String;
 	escuela: String;
-	carrera: String;
-	nombre: String;
-	contraseña: String;
-	tipo: String;
+  	tipo:String;
+  	nombre:String;
+  	carrera?:String;
+  	carnet:String
 }
