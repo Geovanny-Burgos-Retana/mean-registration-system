@@ -4,6 +4,12 @@ import { PruebaComponent } from '../prueba/prueba.component';
 import { ViajarComponent } from '../viajar/viajar.component';
 import { LoginComponent } from '../login/login.component';
 import { ProfesorComponent } from '../profesor/profesor.component';
+import { MallaComponent} from '../componentes-profesor/malla/malla.component';
+import { AsignacionComponent } from '../componentes-profesor/asignacion/asignacion.component';
+import { AsistenciaComponent } from '../componentes-profesor/asistencia/asistencia.component';
+import { GrupoComponent } from '../componentes-profesor/grupo/grupo.component';
+import { NotasComponent } from '../componentes-profesor/notas/notas.component';
+
 
 
 const routes: Routes = [
@@ -12,19 +18,37 @@ const routes: Routes = [
         component: LoginComponent,
       },
       {
-
-          path: 'cargar-profesor',
-          component: ProfesorComponent
-        //path:'quiero-viajar',
-        //component: ViajarComponent
-      },
-      {
         path:'quiero-viajar',
         component: ViajarComponent
       },
       {
         path:'profesor',
-        component: PruebaComponent
+        component: ProfesorComponent
+
+      },
+      {
+        path:'profesor-asignacion',
+        component: AsignacionComponent
+
+      },
+      {
+        path:'profesor-asistencia',
+        component: AsistenciaComponent
+
+      },
+      {
+        path:'profesor-grupo',
+        component: GrupoComponent
+
+      },
+      {
+        path:'profesor-malla',
+        component: MallaComponent
+
+      },
+      {
+        path:'profesor-notas',
+        component: NotasComponent
 
       }
 
