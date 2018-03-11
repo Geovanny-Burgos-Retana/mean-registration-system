@@ -19,6 +19,11 @@ export class UniversidadService {
   			.map(res => res);
   	}
 
+  	getUniversidad(name):Observable<Universidad>{
+  		return this.http.get<Universidad>(`${this.domain}/api/universidad/${name}`)
+  			.map(res => res);
+  	}
+
 
   	addUniversidad(newUniversidad: Universidad) {
     return this.http.post<Universidad>(`${this.domain}/api/universidad`, newUniversidad)

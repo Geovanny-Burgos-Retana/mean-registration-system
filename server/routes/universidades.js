@@ -11,6 +11,15 @@ router.get('/universidades', (req, res, next) => {
 });
 
 
+
+//solo una universidad
+router.get('/universidades/:nombre',(req,res,next) => {
+	db.universidad.findOne({nombre:req.params.nombre},(err,universidad) => {
+		if(err) return next(err);
+		res.json(universidad);
+	});
+});
+
 //Agregar universidad
 router.post('/universidades',(req, res, next)=> {
 	console.log("HOLA curo");
