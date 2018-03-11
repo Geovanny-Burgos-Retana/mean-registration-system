@@ -10,13 +10,15 @@ export class CarreraService {
 	domain: string = 'http://localhost:3000';
 	constructor(private http: HttpClient) { }
 
-	getCarrera(name, pass):Observable<Carrera>{  		
-  		console.log(name);
-  		console.log(pass);
-  		console.log(`${this.domain}/api/carrera/${name}/${pass}`);
-  		return this.http.get<Carrera>(`${this.domain}/api/carrera/${name}/${pass}`)
+	  getCarrera(name):Observable<Carrera>{
+  		return this.http.get<Carrera>(`${this.domain}/api/carreras/${name}`)
   			.map(res => res);
   	}
+
+    getCarreras(name):Observable<Carrera[]>{
+      return this.http.get<Carrera[]>(`${this.domain}/api/carreras`)
+        .map(res => res);
+    }
 
   	addCarrera(newCarrera: Carrera) {
     return this.http.post<Carrera>(`${this.domain}/api/carrera`, newCarrera)

@@ -11,21 +11,22 @@ router.get('/carreras', (req, res, next) => {
 });
 
 //solo una carrera
-router.get('/carreras/:id',(req,res,next) => {
-	db.carrera.findOne({_id:mongojs.ObjectId(req.params.id)},(err,carreras) =>{
+router.get('/carreras/:nombre',(req,res,next) => {
+	db.carrera.findOne({nombre:req.params.nombre},(err,carrera) => {
 		if(err) return next(err);
-		res.json(carreras);
+		res.json(carrera);
 	});
 });
 
 //Actualizar carrera
 
 //Agregar carrera
-router.post('/carreras/:name/:materia',(req, res, next)=> {
+router.post('/carrera',(req, res, next)=> {
 	console.log("HOLA");
-	db.carrera.save({nombre:req.params.name}, (err, car) => {
-            if (err) return next(err);
-            res.json(car);
+	const carrera = req.body;
+	db.carrera.save(carrera, (err, carrera) => {
+        if (err) return next(err);
+        res.json(carrera);
     });
 	
 });

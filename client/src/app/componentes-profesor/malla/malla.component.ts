@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Task } from '../../objects/Task'
+import { Carrera } from '../../objects/Carrera';
+
+import { CarreraService } from '../../services/carrera.service';
 
 @Component({
   selector: 'app-malla',
@@ -9,54 +11,57 @@ import { Task } from '../../objects/Task'
 })
 export class MallaComponent implements OnInit {
 
-  tasks: Task[];
+  carreraObj: Carrera;
   materia: String;
   carrera: String;
+  
 
-  constructor() { 
-	  	const newTask:Task = {
-	  		_id: "1",
-	  		nombre: "Lenguajes",
-	  	}
-		const newTask2:Task = {
-			_id: "2",
-			nombre: "Estructuras",
-		}
-		this.tasks = [newTask,newTask2];
-	}
+  constructor(private carreraService:CarreraService) {
+    this.carreraObj = {
+      nombre:'',
+      materias:[]
+    }
+  }
 
   ngOnInit() {
   }
 
   addMateria() {
-    const newTask:Task = {
-      _id: "3",
-      nombre: this.materia
-    };
-    this.tasks.push(newTask);
-    this.materia = "";
+    console.log(this.materia);
+    if (this.materia != '') {
+      console.log("Si");
+      this.carreraObj.materias.push(this.materia);      
+    }    
+    console.log(this.carreraObj.materias);
   }
 
-  deleteTask(id) {
-    console.log(id);
+  deleteTask(nombre) {
+    console.log(nombre);
     const response = confirm('are you sure to delete it?');
     if (response ){
-      for(let i = 0; i < this.tasks.length; i++) {
-        if(this.tasks[i]._id == id) {
-            this.tasks.splice(i, 1);
-          }
+      for(let i = 0; i < this.carreraObj.materias.length; i++) {        
+          if(this.carreraObj.materias[i] == nombre){
+            this.carreraObj.materias.splice(i, 1);
+          }          
         }
       
     }
   }
 
   registerMalla() {
-    console.log(this.carrera);
-    for (var i = 0; i < this.tasks.length; ++i) {
-      console.log(this.tasks[i]._id);
-      console.log(this.tasks[i].nombre);
-
+    event.preventDefault();
+    if (this.carrera != '') {
+      this.carreraObj.nombre = this.carrera;
+      this.carreraService.addCarrera(this.carreraObj)
+      .subscribe(task => {
+        this.materia = '';
+        this.carreraObj = {
+          nombre:'',
+          materias:[]
+        }
+      })
     }
+    
   }
 
 }

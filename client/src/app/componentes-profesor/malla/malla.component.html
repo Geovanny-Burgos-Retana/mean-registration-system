@@ -48,10 +48,10 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr *ngFor="let task of tasks">					  	
-						  	<td>{{ task.nombre }}</td>
+						<tr *ngFor="let String of carreraObj.materias">
+						  	<td>{{ String }}</td>
 						  	<td>
-						    	<button class="btn btn-danger" (click)="deleteTask(task._id)">
+						    	<button class="btn btn-danger" (click)="deleteTask(carrerasObj.materias.nombre)">
 						      	<i class="fa fa-trash"></i>
 						    	</button>
 						  	</td>

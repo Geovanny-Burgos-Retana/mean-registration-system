@@ -1,5 +1,5 @@
 export class Carrera{
-	_id: String;
+	_id?: String;
 	nombre: String;
 	materias: String[];
 }

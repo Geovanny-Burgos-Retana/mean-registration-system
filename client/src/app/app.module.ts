@@ -6,6 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 
 import { LoginService } from './services/login.service'
+import { CarreraService } from './services/carrera.service';
+import { CursoService } from './services/curso.service';
+import { UniversidadService } from './services/universidad.service';
+import { UsuarioService } from './services/usuario.service';
 
 import { AppComponent } from './app.component';
 import { PruebaComponent } from './prueba/prueba.component';
@@ -40,7 +44,11 @@ import { AsignacionComponent } from './componentes-profesor/asignacion/asignacio
     FormsModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    CarreraService,
+    CursoService,
+    UniversidadService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

@@ -23,7 +23,7 @@ export class CursoService {
   			.map(res => res);
   	}
 
-  	addUser(newCurso: Curso) {
+  	addCurso(newCurso: Curso) {
     return this.http.post<Curso>(`${this.domain}/api/users`, newCurso)
       	.map(res => res);
   	}
