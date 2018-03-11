@@ -14,10 +14,18 @@ export class CursoService {
     getCurso(name, pass):Observable<Curso>{  		
   		console.log(name);
   		console.log(pass);
-  		console.log(`${this.domain}/api/users/${name}/${pass}`);
-  		return this.http.get<Curso>(`${this.domain}/api/users/${name}/${pass}`)
+  		console.log(`${this.domain}/api/cursos/${name}/${pass}`);
+  		return this.http.get<Curso>(`${this.domain}/api/cursos/${name}/${pass}`)
   			.map(res => res);
   	}
+
+//obtener todos los cursos
+    getCursos():Observable<Curso[]>{      
+      console.log(this.http.get<Curso[]>(`${this.domain}/api/cursos`)
+        .map(res => res));
+      return this.http.get<Curso[]>(`${this.domain}/api/cursos`)
+        .map(res => res);
+    }
 
   	addCurso(newCurso: Curso) {
     return this.http.post<Curso>(`${this.domain}/api/cursos`, newCurso)

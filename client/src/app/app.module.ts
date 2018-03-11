@@ -23,6 +23,7 @@ import { NotasComponent } from './componentes-profesor/notas/notas.component';
 import { AsistenciaComponent } from './componentes-profesor/asistencia/asistencia.component';
 import { AsignacionComponent } from './componentes-profesor/asignacion/asignacion.component';
 import { UniversidadComponent } from './universidad/universidad.component';
+import { ComponentesEstudianteComponent } from './componentes-estudiante/componentes-estudiante.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { UniversidadComponent } from './universidad/universidad.component';
     NotasComponent,
     AsistenciaComponent,
     AsignacionComponent,
-    UniversidadComponent
+    UniversidadComponent,
+    ComponentesEstudianteComponent
   ],
   imports: [
     BrowserModule,

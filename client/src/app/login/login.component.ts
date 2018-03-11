@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
   redirectUser(res: User) {
     console.log(res.tipo);
     if (res.tipo == "estudiante") {
-      this.router.navigate(['quiero-viajar']);
+      //this.router.navigate(['quiero-viajar']);
+      this.router.navigate(['matricula-estudiante']);
     } else if (res.tipo == "profesor") {
       this.router.navigate(['profesor']);
     }    
