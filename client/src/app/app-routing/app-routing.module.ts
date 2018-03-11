@@ -9,7 +9,7 @@ import { AsignacionComponent } from '../componentes-profesor/asignacion/asignaci
 import { AsistenciaComponent } from '../componentes-profesor/asistencia/asistencia.component';
 import { GrupoComponent } from '../componentes-profesor/grupo/grupo.component';
 import { NotasComponent } from '../componentes-profesor/notas/notas.component';
-
+import { UniversidadComponent } from '../universidad/universidad.component';
 
 
 const routes: Routes = [
@@ -50,7 +50,13 @@ const routes: Routes = [
         path:'profesor-notas',
         component: NotasComponent
 
+      },
+      {
+        path:'profesor-universidades',
+        component: UniversidadComponent
+
       }
+
 
   ];
 

@@ -11,26 +11,17 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<form id="login-form" method="post" role="form" style="display: block;">
-								<h1>Registro de curso</h1>
+								<h1>Registro de universidades</h1>
 								<div class="form-group">
-									<input type="text" [(ngModel)]="materia" name="materia" id="materia" tabindex="1" class="form-control" placeholder="Nombre de la materia del grupo" value="">
+									<input type="text" [(ngModel)]="nombre" name="nombre" id="nombre" tabindex="1" class="form-control" placeholder="Nombre de la malla curricular" value="">
 								</div>
 								<div class="form-group">
-									<input type="text" [(ngModel)]="grupo" name="grupo" id="grupo" tabindex="1" class="form-control" placeholder="Número de grupo" value="">			
-								</div>
-								<div class="form-group">
-									<input type="text" [(ngModel)]="profesor" name="profesor" id="profesor" tabindex="1" class="form-control" placeholder="Profesor que lo imparte" value="">	
-								</div>
-								<div class="form-group">
-									<input type="text" [(ngModel)]="horario" name="horario" id="horario" tabindex="1" class="form-control" placeholder="Horario" value="">			
-								</div>
-								<div class="form-group">
-									<input type="text" [(ngModel)]="universidad" name="universidad" id="universidad" tabindex="1" class="form-control" placeholder="Universidad" value="">	
+									<input type="text" [(ngModel)]="escuela" name="escuela" id="escuela" tabindex="1" class="form-control" placeholder="Nombre de la escuela" value="">			
 								</div>
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 col-sm-offset-3">
-											<button (click)="addGrupo()" class="form-control btn btn-addSub">AGREGAR GRUPO</button>
+											<button (click)="addEscuela()" class="form-control btn btn-addSub">AGREGAR ESCUELA</button>
 										</div>
 									</div>
 								</div>								
@@ -44,7 +35,7 @@
 	</div>
 </div>
 
-<!--<div class="container">
+<div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-login">
@@ -52,15 +43,15 @@
 					<table class="table text-center table-hover">
 						<thead>
 						<tr>
-						  	<th>Temas</th>					  	
-						  	<th>Operations</th>
+						  	<th>Escuelas</th>					  	
+						  	<th>Operaciones</th>
 						</tr>
 						</thead>
 						<tbody>
 						<tr *ngFor="let String of carreraObj.materias">
 						  	<td>{{ String }}</td>
 						  	<td>
-						    	<button class="btn btn-danger" (click)="deleteTask(carrerasObj.materias.nombre)">
+						    	<button class="btn btn-danger" (click)="deleteUniversidad(carrerasObj.materias.nombre)">
 						      	<i class="fa fa-trash"></i>
 						    	</button>
 						  	</td>
@@ -81,7 +72,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-3">
-								<button (click)="registerMalla()" class="form-control btn btn-register">REGISTRAR MAYA</button>
+								<button (click)="registerUniversidad()" class="form-control btn btn-register">REGISTRAR/ACTUALIZAR UNIVERSIDAD</button>
 							</div>
 						</div>
 					</div>
@@ -89,4 +80,4 @@
 			</div>
 		</div>
 	</div>
-</div>-->
+</div>

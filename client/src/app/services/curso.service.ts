@@ -6,10 +6,6 @@ import {Observable} from 'rxjs';
 
 import { Curso } from '../objects/Curso';
 
-
-
-
-
 @Injectable()
 export class CursoService {
   domain: string = 'http://localhost:3000';
@@ -24,7 +20,7 @@ export class CursoService {
   	}
 
   	addCurso(newCurso: Curso) {
-    return this.http.post<Curso>(`${this.domain}/api/users`, newCurso)
+    return this.http.post<Curso>(`${this.domain}/api/cursos`, newCurso)
       	.map(res => res);
   	}
    

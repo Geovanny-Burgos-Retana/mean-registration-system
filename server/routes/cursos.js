@@ -30,5 +30,4 @@ router.post('/cursos',(req, res, next)=> {
 	
 });
 
-
 module.exports = router;

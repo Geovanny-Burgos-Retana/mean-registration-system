@@ -23,9 +23,9 @@ export class GrupoComponent implements OnInit {
   constructor(private curseService:CursoService){
   	this.curso = {
   		nombre: '',
-		numeroGrupo: '',
-		profesor: '',
-		estudiantes: [],
+		  numeroGrupo: '',
+		  profesor: '',
+		  estudiantes: [],
   		horario: '',
   		universidad: '',
   	}
@@ -42,12 +42,20 @@ export class GrupoComponent implements OnInit {
       this.curso.numeroGrupo = this.grupo;
       this.curso.profesor = this.profesor;
       this.curso.universidad = this.universidad;
-      this.curseService.addGr(this.carreraObj)
+      this.curseService.addCurso(this.curso)
       .subscribe(task => {
         this.materia = '';
-        this.carreraObj = {
-          nombre:'',
-          materias:[]
+        this.grupo = '';
+        this.horario = '';
+        this.universidad = '';
+        this.profesor = '';
+        this.curso = {
+          nombre: '',
+          numeroGrupo: '',
+          profesor: '',
+          estudiantes: [],
+          horario: '',
+          universidad: '',
         }
       })
     }
