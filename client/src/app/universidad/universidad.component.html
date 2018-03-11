@@ -44,17 +44,17 @@
 						<thead>
 						<tr>
 						  	<th>Escuelas</th>					  	
-						  	<th>Operaciones</th>
+						  	<!--<th>Operaciones</th>-->
 						</tr>
 						</thead>
 						<tbody>
-						<tr *ngFor="let String of carreraObj.materias">
+						<tr *ngFor="let String of universidad.escuelas">
 						  	<td>{{ String }}</td>
-						  	<td>
-						    	<button class="btn btn-danger" (click)="deleteUniversidad(carrerasObj.materias.nombre)">
+						  	<!--<td>
+						    	<button class="btn btn-danger" (click)="deleteEscuela(String)">
 						      	<i class="fa fa-trash"></i>
 						    	</button>
-						  	</td>
+						  	</td>-->
 						</tr>
 						</tbody>
 					</table>

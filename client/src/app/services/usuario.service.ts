@@ -15,17 +15,22 @@ export class UsuarioService {
   		console.log(name);
   		console.log(pass);
   		console.log(`${this.domain}/api/usuario/${name}/${pass}`);
-  		return this.http.get<User>(`${this.domain}/api/usuario/${name}/${pass}`)
+  		return this.http.get<User>(`${this.domain}/api/users/${name}/${pass}`)
   			.map(res => res);
   	}
 
+    getUsuarioNombre(name):Observable<User>{
+      return this.http.get<User>(`${this.domain}/api/users/${name}`)
+        .map(res => res);
+    }
+
   	addUsuario(newUsuario: User) {
-    return this.http.post<User>(`${this.domain}/api/usuario`, newUsuario)
+    return this.http.post<User>(`${this.domain}/api/users`, newUsuario)
       	.map(res => res);
   	}
 
   	updateUsuario(newUsuario) {
-    return this.http.put<User>(`${this.domain}/api/usuarios/${newUsuario._id}`, newUsuario)
+    return this.http.put<User>(`${this.domain}/api/users/${newUsuario._id}`, newUsuario)
       .map(res => res)
   	}
 

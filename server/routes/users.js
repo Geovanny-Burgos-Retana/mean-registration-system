@@ -20,6 +20,16 @@ router.get('/users/:name/:pass', function(req, res, next){
     });
 });
 
+// Single User
+router.get('/users/:nombre', function(req, res, next){
+    db.usuario.findOne({nombre: req.params.nombre}, function(err, usuario){
+        if(err){
+            res.send(err);
+        }
+        res.json(usuario);
+    });
+});
+
 // Add a User
 router.post('/users', (req, res, next) => {
     const user = req.body;
@@ -46,7 +56,7 @@ router.post('/users', (req, res, next) => {
     }
 });
 
-// Single User
+/*// Single User
 router.get('/users/universidades', function(req, res, next){
     db.universidad.find((err, usuario) => {
         if(err){
@@ -54,6 +64,6 @@ router.get('/users/universidades', function(req, res, next){
         }
         res.json(usuario);
     });
-});
+});*/
 
 module.exports = router;

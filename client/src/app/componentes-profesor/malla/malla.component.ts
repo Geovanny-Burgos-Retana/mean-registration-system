@@ -30,7 +30,9 @@ export class MallaComponent implements OnInit {
     console.log(this.materia);
     if (this.materia != '') {
       console.log("Si");
+
       this.carreraObj.materias.push(this.materia);      
+      this.materia = '';
     }    
     console.log(this.carreraObj.materias);
   }

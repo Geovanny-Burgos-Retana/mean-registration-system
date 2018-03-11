@@ -13,25 +13,25 @@ export class UniversidadService {
 	constructor(private http:HttpClient) { }
 
 	getUniveridades():Observable<Universidad[]>{
-  		console.log(this.http.get<Universidad[]>(`${this.domain}/universidad/universidad/universidades`)
+  		console.log(this.http.get<Universidad[]>(`${this.domain}/universidades/universidad/universidades`)
   			.map(res => res));
-  		return this.http.get<Universidad[]>(`${this.domain}/api/universidad/universidades`)
+  		return this.http.get<Universidad[]>(`${this.domain}/api/universidades/universidades`)
   			.map(res => res);
   	}
 
   	getUniversidad(name):Observable<Universidad>{
-  		return this.http.get<Universidad>(`${this.domain}/api/universidad/${name}`)
+  		return this.http.get<Universidad>(`${this.domain}/api/universidades/${name}`)
   			.map(res => res);
   	}
 
 
   	addUniversidad(newUniversidad: Universidad) {
-    return this.http.post<Universidad>(`${this.domain}/api/universidad`, newUniversidad)
+    return this.http.post<Universidad>(`${this.domain}/api/universidades`, newUniversidad)
       	.map(res => res);
   	}
 
   	updateUniversidad(newUniversidad) {
-    return this.http.put<Universidad>(`${this.domain}/api/universidad/${newUniversidad._id}`, newUniversidad)
+    return this.http.put<Universidad>(`${this.domain}/api/universidades/update`, newUniversidad)
       .map(res => res)
   	}
 
