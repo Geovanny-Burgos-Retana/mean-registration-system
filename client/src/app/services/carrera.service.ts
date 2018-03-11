@@ -15,7 +15,7 @@ export class CarreraService {
   			.map(res => res);
   	}
 
-    getCarreras(name):Observable<Carrera[]>{
+    getCarreras():Observable<Carrera[]>{
       return this.http.get<Carrera[]>(`${this.domain}/api/carreras`)
         .map(res => res);
     }

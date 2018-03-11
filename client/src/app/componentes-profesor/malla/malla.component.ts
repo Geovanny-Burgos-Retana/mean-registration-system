@@ -14,6 +14,7 @@ export class MallaComponent implements OnInit {
   carreraObj: Carrera;
   materia: String;
   carrera: String;
+  carreras: Carrera[];
   
 
   constructor(private carreraService:CarreraService) {
@@ -21,6 +22,10 @@ export class MallaComponent implements OnInit {
       nombre:'',
       materias:[]
     }
+    this.carreraService.getCarreras()
+      .subscribe(carreras => {
+        this.carreras = carreras;
+      });
   }
 
   ngOnInit() {
@@ -54,16 +59,21 @@ export class MallaComponent implements OnInit {
     event.preventDefault();
     if (this.carrera != '') {
       this.carreraObj.nombre = this.carrera;
-      this.carreraService.addCarrera(this.carreraObj)
-      .subscribe(task => {
-        this.materia = '';
-        this.carreraObj = {
-          nombre:'',
-          materias:[]
-        }
-      })
+      this.carreraService.getCarrera(this.carreraObj.nombre)
+        .subscribe(carrera => {
+          if (carrera == null) {
+            this.carreraService.addCarrera(this.carreraObj)
+              .subscribe(task => {
+              this.materia = '';
+              this.carreraObj = {
+              nombre:'',
+              materias:[]
+              }
+            });
+            this.carreras.push(this.carreraObj);
+          }
+        });
     }
-    
   }
 
 }

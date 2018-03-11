@@ -81,3 +81,52 @@
 		</div>
 	</div>
 </div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<h1>MALLAS REGISTRADAS</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<table class="table text-center table-hover">
+						<thead>
+						<tr>
+						  	<th>Nombre</th>					  	
+						  	<!--<th>Operations</th>-->
+						</tr>
+						</thead>
+						<tbody>
+						<tr *ngFor="let carrera of carreras">
+						  	<td>{{ carrera.nombre }}</td>
+						  	<!--<td>
+						    	<button class="btn btn-danger" (click)="deleteTask(carrerasObj.materias.nombre)">
+						      	<i class="fa fa-trash"></i>
+						    	</button>
+						  	</td>-->
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
