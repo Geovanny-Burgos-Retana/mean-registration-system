@@ -16,12 +16,17 @@ export class UniversidadComponent implements OnInit {
   escuela: String;
   universidad: Universidad;
   u: Universidad;
+  universidades: Universidad[];
 
   constructor(private universidadService:UniversidadService, private usuarioService:UsuarioService) { 
   	this.universidad = {
   		nombre: '',
   		escuelas: []
   	}
+    this.universidadService.getUniveridades()
+      .subscribe(universidades => {
+        this.universidades = universidades;
+      });
   }
 
   ngOnInit() {
@@ -67,6 +72,7 @@ export class UniversidadComponent implements OnInit {
                 }
                 console.log(task);
               });
+              this.universidades.push(this.universidad);
            } else {             
              console.log("Ya existe");
              for (var i = 0; i < universidad.escuelas.length; ++i) {

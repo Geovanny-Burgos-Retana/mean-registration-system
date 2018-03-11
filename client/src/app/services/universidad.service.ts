@@ -15,7 +15,7 @@ export class UniversidadService {
 	getUniveridades():Observable<Universidad[]>{
   		console.log(this.http.get<Universidad[]>(`${this.domain}/universidades/universidad/universidades`)
   			.map(res => res));
-  		return this.http.get<Universidad[]>(`${this.domain}/api/universidades/universidades`)
+  		return this.http.get<Universidad[]>(`${this.domain}/api/universidades`)
   			.map(res => res);
   	}
 
