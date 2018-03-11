@@ -10,4 +10,25 @@ router.get('/cursos', (req, res, next) => {
     });
 });
 
+
+//solo una curso
+router.get('/cursos/:id',(req,res,next) => {
+	db.curso.findOne({_id:mongojs.ObjectId(req.params.id)},(err,cursos) =>{
+		if(err) return next(err);
+		res.json(cursos);
+	});
+});
+
+//Agregar curso
+router.post('/cursos',(req, res, next)=> {
+	console.log("HOLA curo");
+	const curso = req.body;
+	db.curso.save(curso, (err, curso) => {
+            if (err) return next(err);
+            res.json(curso);
+    });
+	
+});
+
+
 module.exports = router;

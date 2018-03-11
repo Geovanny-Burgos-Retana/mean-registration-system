@@ -10,4 +10,16 @@ router.get('/universidades', (req, res, next) => {
     });
 });
 
+
+//Agregar universidad
+router.post('/universidades',(req, res, next)=> {
+	console.log("HOLA curo");
+	const universidad = req.body;
+	db.universidades.save(universidad, (err, universidad) => {
+            if (err) return next(err);
+            res.json(universidad);
+    });
+	
+});
+
 module.exports = router;
