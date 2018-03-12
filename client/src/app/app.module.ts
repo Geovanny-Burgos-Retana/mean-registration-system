@@ -11,6 +11,7 @@ import { CursoService } from './services/curso.service';
 import { UniversidadService } from './services/universidad.service';
 import { UsuarioService } from './services/usuario.service';
 
+
 import { AppComponent } from './app.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { ViajarComponent } from './viajar/viajar.component';
@@ -24,6 +25,8 @@ import { AsistenciaComponent } from './componentes-profesor/asistencia/asistenci
 import { AsignacionComponent } from './componentes-profesor/asignacion/asignacion.component';
 import { UniversidadComponent } from './universidad/universidad.component';
 import { ComponentesEstudianteComponent } from './componentes-estudiante/componentes-estudiante.component';
+
+import { SecionService } from './services/secion.service';
 
 
 @NgModule({
@@ -52,7 +55,8 @@ import { ComponentesEstudianteComponent } from './componentes-estudiante/compone
     CarreraService,
     CursoService,
     UniversidadService,
-    UsuarioService
+    UsuarioService,
+    SecionService
   ],
   bootstrap: [AppComponent]
 })

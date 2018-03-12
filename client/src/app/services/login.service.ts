@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
 
 import { User } from '../objects/Usuario';
+import { Secion } from '../objects/secion';
+
 
 @Injectable()
 export class LoginService {
@@ -24,6 +26,10 @@ export class LoginService {
       	.map(res => res);
   	}
 
-
-  	
+/*
+    addSecion(newSecion: Secion ) {
+    return this.http.post<Secion>(`${this.domain}/api/secion`, newSecion)
+        .map(res => res);
+    }
+    */
 }

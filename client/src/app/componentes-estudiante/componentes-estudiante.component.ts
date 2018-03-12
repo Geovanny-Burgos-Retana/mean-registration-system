@@ -16,11 +16,12 @@ export class ComponentesEstudianteComponent implements OnInit {
   universidad: String;
   profesor: String;
   estudiantes: String [];
+  posiblesCursos: String[];
+
 
   //Colecciones  
   cursos: Curso[];
   
-
 //Instancia del servicio curo
   constructor(private curseService:CursoService) {
   	this.curseService.getCursos()
@@ -29,10 +30,18 @@ export class ComponentesEstudianteComponent implements OnInit {
   		console.log("lista cursos"+this.cursos);
   	})
 
+
+
   }
   
   ngOnInit() {
   }
+
+  agregarCurso(curso){
+  	console.log("curso: "+curso);
+  	//this.posiblesCursos.push(curso);
+  }
+
 
   mostrarCursos(){
   	console.log("lista cursos"+this.cursos);
