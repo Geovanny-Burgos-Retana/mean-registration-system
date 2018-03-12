@@ -44,7 +44,7 @@
 	</div>
 </div>
 
-<!--<div class="container">
+<div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-login">
@@ -52,18 +52,18 @@
 					<table class="table text-center table-hover">
 						<thead>
 						<tr>
-						  	<th>Temas</th>					  	
-						  	<th>Operations</th>
+						  	<th>Materia</th>					  	
+						  	<th>Grupo</th>
+						  	<th>Profesor</th>
+						  	<th>Horario</th>
 						</tr>
 						</thead>
 						<tbody>
-						<tr *ngFor="let String of carreraObj.materias">
-						  	<td>{{ String }}</td>
-						  	<td>
-						    	<button class="btn btn-danger" (click)="deleteTask(carrerasObj.materias.nombre)">
-						      	<i class="fa fa-trash"></i>
-						    	</button>
-						  	</td>
+						<tr *ngFor="let curso of cursos">
+						  	<td>{{ curso.nombre }}</td>
+						  	<td>{{ curso.numeroGrupo }}</td>
+						  	<td>{{ curso.profesor }}</td>
+						  	<td>{{ curso.horario }}</td>
 						</tr>
 						</tbody>
 					</table>
@@ -72,21 +72,3 @@
 		</div>
 	</div>
 </div>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-login">
-				<div class="panel-heading">
-					<div class="form-group">
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3">
-								<button (click)="registerMalla()" class="form-control btn btn-register">REGISTRAR MAYA</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>-->

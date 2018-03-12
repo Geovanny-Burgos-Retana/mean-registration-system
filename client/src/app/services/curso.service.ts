@@ -11,13 +11,18 @@ export class CursoService {
   domain: string = 'http://localhost:3000';
   constructor(private http: HttpClient) {} 
     
-    getCurso(name, pass):Observable<Curso>{  		
+    getCurso(name, numero):Observable<Curso>{  		
   		console.log(name);
-  		console.log(pass);
-  		console.log(`${this.domain}/api/users/${name}/${pass}`);
-  		return this.http.get<Curso>(`${this.domain}/api/users/${name}/${pass}`)
+  		console.log(numero);
+  		console.log(`${this.domain}/api/users/${name}/${numero}`);
+  		return this.http.get<Curso>(`${this.domain}/api/cursos/${name}/${numero}`)
   			.map(res => res);
   	}
+
+    getCursos():Observable<Curso[]>{
+      return this.http.get<Curso[]>(`${this.domain}/api/cursos`)
+        .map(res => res);
+    }
 
   	addCurso(newCurso: Curso) {
     return this.http.post<Curso>(`${this.domain}/api/cursos`, newCurso)
@@ -25,9 +30,7 @@ export class CursoService {
   	}
    
     updateCurso(newCurso) {
-      return this.http.put<Curso>('${this.domain}/api/Curso/${newCurso._id}', newCurso)
+      return this.http.put<Curso>('${this.domain}/api/cursos/${newCurso._id}', newCurso)
         .map(res => res)
     }
-
-
 }

@@ -12,8 +12,8 @@ router.get('/cursos', (req, res, next) => {
 
 
 //solo una curso
-router.get('/cursos/:id',(req,res,next) => {
-	db.curso.findOne({_id:mongojs.ObjectId(req.params.id)},(err,cursos) =>{
+router.get('/cursos/:name/:numero',(req,res,next) => {
+	db.curso.findOne({nombre:req.params.name, numeroGrupo:req.params.numero},(err,cursos) =>{
 		if(err) return next(err);
 		res.json(cursos);
 	});

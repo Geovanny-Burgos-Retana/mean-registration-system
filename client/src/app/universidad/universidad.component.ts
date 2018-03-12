@@ -62,6 +62,7 @@ export class UniversidadComponent implements OnInit {
       this.universidadService.getUniversidad(this.universidad.nombre)
         .subscribe(universidad => {
            if (universidad == null) {
+             this.universidades.push(this.universidad);
              console.log("Insert into");
               this.universidadService.addUniversidad(this.universidad)
                 .subscribe(task => {
@@ -71,8 +72,7 @@ export class UniversidadComponent implements OnInit {
                     escuelas:[]                    
                 }
                 console.log(task);
-              });
-              this.universidades.push(this.universidad);
+              });              
            } else {             
              console.log("Ya existe");
              for (var i = 0; i < universidad.escuelas.length; ++i) {

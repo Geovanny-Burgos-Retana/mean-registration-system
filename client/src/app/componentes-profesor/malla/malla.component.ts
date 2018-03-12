@@ -62,6 +62,7 @@ export class MallaComponent implements OnInit {
       this.carreraService.getCarrera(this.carreraObj.nombre)
         .subscribe(carrera => {
           if (carrera == null) {
+            this.carreras.push(this.carreraObj);
             this.carreraService.addCarrera(this.carreraObj)
               .subscribe(task => {
               this.materia = '';
@@ -69,8 +70,7 @@ export class MallaComponent implements OnInit {
               nombre:'',
               materias:[]
               }
-            });
-            this.carreras.push(this.carreraObj);
+            });            
           }
         });
     }
