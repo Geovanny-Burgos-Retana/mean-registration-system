@@ -30,7 +30,8 @@
   															<tbody>
     															<tr *ngFor="let curso of cursos">
       																<td>
-        															<input type="checkbox" (click)="agregarCurso(curso)">
+      																	<!-- Enviar solo la lista de estudiantes para agregar ahi el est-->
+        															<input type="checkbox" (click)="agregarEstACurso(curso)">
      																</td>
       																<td>{{ curso.nombre}}</td>
       																<td>{{ curso.numeroGrupo}}</td>

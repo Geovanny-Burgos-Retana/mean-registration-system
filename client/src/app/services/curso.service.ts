@@ -33,7 +33,9 @@ export class CursoService {
   	}
    
     updateCurso(newCurso) {
-      return this.http.put<Curso>('${this.domain}/api/Curso/${newCurso._id}', newCurso)
+      console.log('${this.domain}/api/cursos/update');
+      console.log(newCurso);
+      return this.http.put<Curso>(`${this.domain}/api/cursos/update`, newCurso)
         .map(res => res)
     }
 

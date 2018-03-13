@@ -17,6 +17,13 @@ export class SecionService {
   			.map(res => res);
   	}
 
+  getSeciones():Observable<Secion[]>{
+      console.log(this.http.get<Secion[]>(`${this.domain}/secion`)
+        .map(res => res));
+      return this.http.get<Secion[]>(`${this.domain}/api/secion`)
+        .map(res => res);
+    }
+
 
 
   	getUsuarioNombre(name):Observable<Secion>{
