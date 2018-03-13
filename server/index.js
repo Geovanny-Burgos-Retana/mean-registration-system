@@ -6,6 +6,7 @@ const usersRoutes = require('./routes/users');
 const universidadRoutes = require('./routes/universidades');
 const cursoRoutes = require('./routes/cursos');
 const carreraRoutes = require('./routes/carreras');
+const secionRoutes = require('./routes/secion')
 //const institucionRoutes = require('./routes/instituciones');
 
 const app = express();
@@ -21,6 +22,7 @@ app.use('/api', usersRoutes);
 app.use('/api', universidadRoutes);
 app.use('/api', cursoRoutes);
 app.use('/api', carreraRoutes);
+app.use('/api', secionRoutes);
 //app.use('/api', institucionRoutes);
 
 
