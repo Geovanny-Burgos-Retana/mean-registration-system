@@ -1,0 +1,83 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-lg-12">
+							<form id="login-form" method="post" role="form" style="display: block;">
+								<h1>Registro de curso</h1>
+								<div class="form-group">
+									<input type="text" [(ngModel)]="curso.nombre" name="materia" id="materia" tabindex="1" class="form-control" placeholder="Materia" value="">
+								</div>
+								<div class="form-group">
+									<input type="text" [(ngModel)]="curso.numeroGrupo" name="grupo" id="grupo" tabindex="2" class="form-control" placeholder="Número de grupo" value="">			
+								</div>
+								<div class="form-group">
+									<input type="text" [(ngModel)]="curso.profesor" name="profesor" id="profesor" tabindex="3" class="form-control" placeholder="Profesor" value="">	
+								</div>
+								<div class="form-group">
+									<input type="text" [(ngModel)]="curso.horario" name="horario" id="horario" tabindex="4" class="form-control" placeholder="Horario" value="">			
+								</div>
+								<div class="form-group">
+									<input type="text" [(ngModel)]="curso.universidad" name="universidad" id="universidad" tabindex="5" class="form-control" placeholder="Universidad" value="">	
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-6 col-sm-offset-3">
+											<button (click)="registrarGrupo()" class="form-control btn btn-addSub">REGISTRAR</button>
+										</div>
+									</div>
+								</div>								
+							</form>
+						</div>
+					</div>
+					<hr>
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<table class="table text-center table-hover">
+						<thead>
+						<tr>
+						  	<th>Materia</th>					  	
+						  	<th>Grupo</th>
+						  	<th>Profesor</th>
+						  	<th>Horario</th>
+						  	<th>Operaciones</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr *ngFor="let curso of cursos">
+						  	<td>{{ curso.nombre }}</td>
+						  	<td>{{ curso.numeroGrupo }}</td>
+						  	<td>{{ curso.profesor }}</td>
+						  	<td>{{ curso.horario }}</td>
+						  	<td>
+						  		<button class="btn btn-success" (click)="editarGrupo(curso)">
+						      	<i class="fa fa-edit"></i>
+						    	</button>
+						    	<button class="btn btn-danger" (click)="eliminarGrupo(curso)">
+						      	<i class="fa fa-trash"></i>
+						    	</button>
+						  	</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

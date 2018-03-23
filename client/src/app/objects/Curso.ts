@@ -6,4 +6,5 @@ export class Curso{
 	estudiantes: String[];
   	horario: String;
   	universidad: String;
+  	isRegistration?:Boolean;
 }

@@ -1,0 +1,136 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-lg-12">
+							<form id="login-form" method="post" role="form" style="display: block;">
+								<h1>Registro de universidades</h1>
+								<div class="form-group">
+									<input type="text" [(ngModel)]="nombre" name="nombre" id="nombre" tabindex="1" class="form-control" placeholder="Nombre de la malla curricular" value="">
+								</div>
+								<div class="form-group">
+									<input type="text" [(ngModel)]="escuela" name="escuela" id="escuela" tabindex="1" class="form-control" placeholder="Nombre de la escuela" value="">			
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-6 col-sm-offset-3">
+											<button (click)="agregarEscuela()" class="form-control btn btn-addSub">AGREGAR ESCUELA</button>
+										</div>
+									</div>
+								</div>								
+							</form>
+						</div>
+					</div>
+					<hr>
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<table class="table text-center table-hover">
+						<thead>
+						<tr>
+						  	<th>Escuelas</th>					  	
+						  	<th>Eliminar</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr *ngFor="let String of universidad.escuelas">
+						  	<td>{{ String }}</td>
+						  	<td>
+						    	<button class="btn btn-danger" (click)="eliminarEscuela(String)">
+						      	<i class="fa fa-trash"></i>
+						    	</button>
+						  	</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<button (click)="registrarUniversidad()" class="form-control btn btn-register">REGISTRAR </button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-10 text-center">
+								<h3>UNIVERSIDADES REGISTRADAS</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<table class="table text-center table-hover">
+						<thead>
+						<tr>
+						  	<th>Nombre</th>
+						  	<th># Escuelas</th>
+						  	<th>Operaciones</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr *ngFor="let universidad of universidades">
+						  	<td>{{ universidad.nombre }}</td>
+						  	<td>{{ universidad.escuelas.length }}</td>
+						  	<td>
+						  		<button class="btn btn-success" (click)="editarUniversidad(universidad)">
+						      	<i class="fa fa-edit"></i>
+						    	</button>
+						    	<button class="btn btn-danger" (click)="eliminarUniversidad(universidad)">
+						      	<i class="fa fa-trash"></i>
+						    	</button>
+						  	</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

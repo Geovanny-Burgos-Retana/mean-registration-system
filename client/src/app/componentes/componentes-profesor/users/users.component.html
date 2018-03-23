@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-md-offset-1">
+			<div class="panel panel-login">
+				<div class="panel-heading">
+					<table class="table text-center table-hover">
+						<thead>
+						<tr>
+						  	<th>Nombre</th>
+						  	<th>Carnet</th>
+						  	<th>Universidad</th>
+						  	<th>Tipo</th>
+						  	<th>Operaciones</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr *ngFor="let usuario of usuarios">
+						  	<td>{{ usuario.nombre }}</td>
+						  	<td>{{ usuario.carnet }}</td>
+						  	<td>{{ usuario.universidad }}</td>
+						  	<td>{{ usuario.tipo }}</td>
+						  	<td>
+						  		<button class="btn btn-success" (click)="editarUsuario(usuario)">
+						      	<i class="fa fa-edit"></i>
+						    	</button>
+						    	<button class="btn btn-danger" (click)="eliminarUsuario(usuario)">
+						      	<i class="fa fa-trash"></i>
+						    	</button>
+						  	</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

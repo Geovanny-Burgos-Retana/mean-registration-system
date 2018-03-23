@@ -33,14 +33,14 @@ router.get('/secion/:nombre', function(req, res, next){
 // Add a secion
 router.post('/secion', (req, res, next) => {
     const sec = req.body;
-    console.log("usuario "+sec.usuario);
+    /*console.log("usuario "+sec.usuario);
     console.log("contrasena "+sec.contrasena);
     console.log("universidad "+sec.universidad);
     console.log("escuela "+sec.escuela);
     console.log("tipo "+sec.tipo);
     console.log("nombre "+sec.nombre);
     console.log("carnet "+sec.carnet);
-    console.log("carrera "+sec.carrera);
+    console.log("carrera "+sec.carrera);*/
     db.secion.save(sec, (err, secion) => {
             if (err) return next(err);
             res.json(sec);

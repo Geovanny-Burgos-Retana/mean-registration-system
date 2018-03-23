@@ -11,6 +11,36 @@ export class UsuarioService {
 
 	constructor(private http: HttpClient) { }
 
+  createUsuario(user: User):Observable<User>{    
+    return this.http.post<User>(`${this.domain}/api/user/create`, user)
+      .map(res => res);
+  }
+
+  readUsuarios():Observable<User[]>{
+    return this.http.get<User[]>(`${this.domain}/api/user/get`)
+      .map(res => res);
+  }
+  
+  updateUsuario(user: User):Observable<User>{
+    return this.http.put<User>(`${this.domain}/api/user/update`, user)
+      .map(res => res);
+  }
+
+  deleteUsuario(_id: String):Observable<User>{
+    return this.http.delete<User>(`${this.domain}/api/user/delete/${_id}`)
+      .map(res => res);
+  }
+
+  readUsuario(usuario: String, contrasena: String):Observable<User>{
+    return this.http.get<User>(`${this.domain}/api/user/get/${usuario}/${contrasena}`)
+      .map(res => res);
+  }
+
+  readUsuarioName(nombre: String):Observable<User>{
+    return this.http.get<User>(`${this.domain}/api/user/get/${nombre}`)
+      .map(res => res);
+  }
+  /*
 	getUsuario(name, pass):Observable<User>{  		
   		console.log(name);
   		console.log(pass);
@@ -33,5 +63,5 @@ export class UsuarioService {
     return this.http.put<User>(`${this.domain}/api/users/${newUsuario._id}`, newUsuario)
       .map(res => res)
   	}
-
+  */
 }

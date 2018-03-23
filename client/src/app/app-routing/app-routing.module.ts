@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PruebaComponent } from '../prueba/prueba.component';
-import { ViajarComponent } from '../viajar/viajar.component';
-import { LoginComponent } from '../login/login.component';
 import { ProfesorComponent } from '../profesor/profesor.component';
-import { MallaComponent} from '../componentes-profesor/malla/malla.component';
 import { AsignacionComponent } from '../componentes-profesor/asignacion/asignacion.component';
 import { AsistenciaComponent } from '../componentes-profesor/asistencia/asistencia.component';
-import { GrupoComponent } from '../componentes-profesor/grupo/grupo.component';
 import { NotasComponent } from '../componentes-profesor/notas/notas.component';
-import { UniversidadComponent } from '../universidad/universidad.component';
-import { ComponentesEstudianteComponent} from '../componentes-estudiante/componentes-estudiante.component';
 
+import { StartLoginComponent } from '../componentes/start-login/start-login.component';
+import { RegisterComponent } from '../componentes/register/register.component';
+import { UsersComponent } from '../componentes/componentes-profesor/users/users.component';
+import { UniversityComponent } from '../componentes/componentes-profesor/university/university.component';
+import { CurriculumComponent } from '../componentes/componentes-profesor/curriculum/curriculum.component';
+import { GroupComponent } from '../componentes/componentes-profesor/group/group.component';
+import { RegistrationComponent } from '../componentes/componenetes-estudiante/registration/registration.component';
+
+import { UserDetailsComponent } from '../componentes/detalles/user-details/user-details.component';
+import { UniversityDetailsComponent } from '../componentes/detalles/university-details/university-details.component';
+import { CurriculumDetailsComponent } from '../componentes/detalles/curriculum-details/curriculum-details.component';
 
 const routes: Routes = [
       {
         path: '',
-        component: LoginComponent,
-      },
-      {
-        path:'quiero-viajar',
-        component: ViajarComponent
+        component: StartLoginComponent,
       },
       {
         path:'profesor',
@@ -38,32 +38,46 @@ const routes: Routes = [
 
       },
       {
-        path:'profesor-grupo',
-        component: GrupoComponent
-
-      },
-      {
-        path:'profesor-malla',
-        component: MallaComponent
-
-      },
-      {
         path:'profesor-notas',
         component: NotasComponent
 
       },
       {
-        path:'profesor-universidades',
-        component: UniversidadComponent
-
+        path:'registrar-usuario',
+        component: RegisterComponent
       },
       {
-        path:'matricula-estudiante',
-        component: ComponentesEstudianteComponent
+        path:'users',
+        component: UsersComponent
+      },
+      {
+        path:'user-details',
+        component: UserDetailsComponent
+      },
+      {
+        path:'universities',
+        component: UniversityComponent
+      },
+      {
+        path:'university-details',
+        component: UniversityDetailsComponent
+      },
+      {
+        path:'curriculums',
+        component: CurriculumComponent
+      },
+      {
+        path:'curriculum-details',
+        component: CurriculumDetailsComponent
+      },
+      {
+        path:'group',
+        component: GroupComponent
+      },
+      {
+        path:'registration',
+        component:RegistrationComponent
       }
-
-
-
   ];
 
 @NgModule({
