@@ -31,7 +31,12 @@ export class MateriaService {
     }
 
     readMateriasGrupo(carrera: String):Observable<Materia[]>{
-        return this.http.get<Materia[]>(`${this.domain}/api/course/get/${carrera}`)
+        return this.http.get<Materia[]>(`${this.domain}/api/subject/get/${carrera}`)
+          .map(res => res);
+    }
+
+    readMateriaGrupo(carrera: String, materia: String):Observable<Materia[]>{
+        return this.http.get<Materia[]>(`${this.domain}/api/subject/get/${carrera}/${materia}`)
           .map(res => res);
     }
 }

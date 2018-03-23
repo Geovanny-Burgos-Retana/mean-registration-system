@@ -15,9 +15,6 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ProfesorComponent } from './profesor/profesor.component';
 //import { MallaComponent } from './componentes-profesor/malla/malla.component';
 //import { GrupoComponent } from './componentes-profesor/grupo/grupo.component';
-import { NotasComponent } from './componentes-profesor/notas/notas.component';
-import { AsistenciaComponent } from './componentes-profesor/asistencia/asistencia.component';
-import { AsignacionComponent } from './componentes-profesor/asignacion/asignacion.component';
 //import { UniversidadComponent } from './universidad/universidad.component';
 //import { ComponentesEstudianteComponent } from './componentes-estudiante/componentes-estudiante.component';
 
@@ -31,7 +28,6 @@ import { CurriculumComponent } from './componentes/componentes-profesor/curricul
 import { GroupComponent } from './componentes/componentes-profesor/group/group.component';
 import { CurriculumDetailsComponent } from './componentes/detalles/curriculum-details/curriculum-details.component';
 import { AssistanceComponent } from './componentes/componentes-profesor/assistance/assistance.component';
-import { AssignmentComponent } from './componentes/componentes-profesor/assignment/assignment.component';
 import { ScoresComponent } from './componentes/componentes-profesor/scores/scores.component';
 import { RegistrationComponent } from './componentes/componenetes-estudiante/registration/registration.component';
 
@@ -40,9 +36,6 @@ import { RegistrationComponent } from './componentes/componenetes-estudiante/reg
   declarations: [
     AppComponent,
     ProfesorComponent,
-    NotasComponent,
-    AsistenciaComponent,
-    AsignacionComponent,
     StartLoginComponent,
     RegisterComponent,
     UsersComponent,
@@ -53,7 +46,6 @@ import { RegistrationComponent } from './componentes/componenetes-estudiante/reg
     GroupComponent,
     CurriculumDetailsComponent,
     AssistanceComponent,
-    AssignmentComponent,
     ScoresComponent,
     RegistrationComponent
   ],

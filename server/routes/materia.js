@@ -3,7 +3,7 @@ const mongojs = require('mongojs');
 const db = mongojs('mongodb://gio:1234@ds151558.mlab.com:51558/universities',['materia']);
 
 //Obtener materias
-router.get('/subject/get', (req, res, next) => {
+router.get('/subject/get', (req, res, next) => {    
     db.materia.find((err, subject) => {
         if (err) return next(err);
         res.json(subject);
@@ -13,6 +13,7 @@ router.get('/subject/get', (req, res, next) => {
 //Guardar materia(s)
 router.post('/subject/create', (req, res, next) => {
     const subject = req.body;
+    console.log(subject);
     db.materia.save(subject, (err, subject) => {
         if (err) return next(err);
         res.json(subject);
@@ -22,13 +23,14 @@ router.post('/subject/create', (req, res, next) => {
 //Actualizar materia
 router.put('/subject/update', (req, res, next) => {
     const subject = req.body;
+    console.log(subject.nombre);
     let updateSubject = {};
     
     if(subject.nombre) {
         updateSubject.nombre = subject.nombre;
     }
     if(subject.carrera) {
-        updateSubject,carrera = subject.carrera;
+        updateSubject.carrera = subject.carrera;
     }
     if (subject.temas) {
         updateSubject.temas = subject.temas;
@@ -54,7 +56,15 @@ router.delete('/subject/delete/:_id', (req, res, next) => {
 
 //Obtener materias de una carrera
 router.get('/subject/get/:career', function(req, res, next){
-    db.materia.findOne({carrera: req.params.career}, function(err, subject){
+    db.materia.find({carrera: req.params.career}, function(err, subject){
+        if(err){res.send(err);}
+        res.json(subject);
+    });
+});
+
+//Obtener materia de una carrera
+router.get('/subject/get/:career/:subject', function(req, res, next){
+    db.materia.findOne({nombre: req.params.subject, carrera: req.params.career}, function(err, subject){
         if(err){res.send(err);}
         res.json(subject);
     });
