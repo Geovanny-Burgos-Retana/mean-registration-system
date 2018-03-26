@@ -18,18 +18,23 @@ export class RegistrationComponent implements OnInit {
 	user: User;
 
 	constructor(private router:Router, private courseService:CursoService, private recievedData: ActivatedRoute) { 
-		this.user = {
-			_id:'',
-			nombre:'',
-			carnet:'',
-			usuario:'',
-			contrasena:'',
-			universidad:'',
-			escuela:'',
-			tipo:''
-		}
-		this.cargarCursos();				
-		console.log(this.user.carnet);
+        this.user = {
+            _id:'',
+            nombre:'',
+            carnet:'',
+            universidad:'',
+            escuela:'',
+            carrera:'',
+            usuario:'',
+            contrasena:'',
+            tipo:''
+        }
+        this.recievedData.queryParams.subscribe(params => {
+            this.user._id = params["_id"];
+            this.user.nombre = params["nombre"];
+            this.user.carnet = params["carnet"];
+        });
+		this.cargarCursos();
 	}
 
 	ngOnInit() {
@@ -48,26 +53,16 @@ export class RegistrationComponent implements OnInit {
   	}
 
   	cargarCursos(){
-		this.courseService.readGrupos()
-			.subscribe(courses => {
-				console.log("readGrupos");
-				console.log(courses);
-				this.cursos = courses;
-				console.log(this.cursos);
-			});
-		this.recievedData.queryParams.subscribe(params =>{
-			this.user._id = params["_id"];
-			this.user.nombre = params["nombre"],
-			this.user.carnet = params["carnet"]
-		});		
+  		this.courseService.readGrupos()
+  		.subscribe(courses => {
+  			this.cursos = courses;
+  		});	      
   	}
 
   	cargarCursosMatriculados() {
   		
   		this.courseService.readCourseStudent(this.user.carnet)
   			.subscribe(courses => {
-  				console.log(courses.length);
-  				console.log(this.cursos);
   				for (var i = 0; i < courses.length; ++i) {
   					for (var j = 0; j < this.cursos.length; ++j) {
   						if (this.cursos[j]._id == courses[i]._id) {
@@ -76,6 +71,7 @@ export class RegistrationComponent implements OnInit {
   					}
   				}
   			});
+
   	}
 
   	desmatricular(curso: Curso){

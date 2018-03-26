@@ -1,3 +1,5 @@
+import { Asignacion } from './Asignacion';
+
 export class Curso{
 	_id?: String;
 	nombre: String;
@@ -6,5 +8,6 @@ export class Curso{
 	estudiantes: String[];
   	horario: String;
   	universidad: String;
+  	asignaciones: Asignacion[];
   	isRegistration?:Boolean;
 }

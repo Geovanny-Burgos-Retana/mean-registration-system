@@ -10,34 +10,84 @@
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-lg-12">
-							<form id="login-form" method="post" role="form" style="display: block;">
-								<h1>Registro de curso</h1>
-								<div class="form-group">
-									<input type="text" [(ngModel)]="curso.nombre" name="materia" id="materia" tabindex="1" class="form-control" placeholder="Materia" value="">
-								</div>
-								<div class="form-group">
-									<input type="text" [(ngModel)]="curso.numeroGrupo" name="grupo" id="grupo" tabindex="2" class="form-control" placeholder="Número de grupo" value="">			
-								</div>
-								<div class="form-group">
-									<input type="text" [(ngModel)]="curso.profesor" name="profesor" id="profesor" tabindex="3" class="form-control" placeholder="Profesor" value="">	
-								</div>
-								<div class="form-group">
-									<input type="text" [(ngModel)]="curso.horario" name="horario" id="horario" tabindex="4" class="form-control" placeholder="Horario" value="">			
-								</div>
-								<div class="form-group">
-									<input type="text" [(ngModel)]="curso.universidad" name="universidad" id="universidad" tabindex="5" class="form-control" placeholder="Universidad" value="">	
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-6 col-sm-offset-3">
-											<button (click)="registrarGrupo()" class="form-control btn btn-addSub">REGISTRAR</button>
-										</div>
+							<h1>Registro de curso</h1>
+							<div class="form-group">
+								<input type="text" [(ngModel)]="curso.nombre" name="materia" id="materia" tabindex="1" class="form-control" placeholder="Materia" value="">
+							</div>
+							<div class="form-group">
+								<input type="text" [(ngModel)]="curso.numeroGrupo" name="grupo" id="grupo" tabindex="2" class="form-control" placeholder="Número de grupo" value="">			
+							</div>
+							<div class="form-group">
+								<input type="text" [(ngModel)]="curso.profesor" name="profesor" id="profesor" tabindex="3" class="form-control" placeholder="Profesor" value="">	
+							</div>
+							<div class="form-group">
+								<input type="text" [(ngModel)]="curso.horario" name="horario" id="horario" tabindex="4" class="form-control" placeholder="Horario" value="">			
+							</div>
+							<div class="form-group">
+								<input type="text" [(ngModel)]="curso.universidad" name="universidad" id="universidad" tabindex="5" class="form-control" placeholder="Universidad" value="">	
+							</div>
+							
+							<div class="form-group">
+								<h2>Asignacion</h2>
+							</div>
+							<div class="form-group">
+								<select [(ngModel)]="selectedTipo" class="selectpicker form-control">
+								  <option *ngFor="let tipo of tiposEvaluciones" [ngValue]="tipo">{{ tipo }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<input type="text" [(ngModel)]="num" name="num" id="num" tabindex="6" class="form-control" placeholder="Numero" value="">	
+							</div>
+							<div class="form-group">
+								<input type="text" [(ngModel)]="porcentaje" name="porcentaje" id="porcentaje" tabindex="7" class="form-control" placeholder="Porcentaje" value="">			
+							</div>
+							<div class="form-group">
+								<input type="text" [(ngModel)]="fecha" name="fecha" id="fecha" tabindex="8" class="form-control" placeholder="Fecha de entrega. Formato: AAAA-MM-DD" value="">	
+							</div>
+
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-6 col-sm-offset-3">
+										<button (click)="agregarAsignacion()" class="form-control btn btn-addSub">AGREGAR ASIGNACION</button>
 									</div>
-								</div>								
-							</form>
+								</div>
+							</div>
+
+							<table class="table text-center table-hover">
+								<thead>
+								<tr>
+								  	<th>Asignacion</th>					  	
+								  	<th>Numero</th>
+								  	<th>Entrega</th>
+								  	<th>Porcentaje</th>
+								  	<th>Operaciones</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr *ngFor="let asignacion of curso.asignaciones">
+								  	<td>{{ asignacion.tipo }}</td>
+								  	<td>{{ asignacion.num }}</td>
+								  	<td>{{ asignacion.fecha.toString() }}</td>
+								  	<td>{{ asignacion.porcentaje }}</td>
+								  	<td>
+								    	<button class="btn btn-danger" (click)="eliminarAsignacion(asignacion)">
+								      	<i class="fa fa-trash"></i>
+								    	</button>
+								  	</td>
+								</tr>
+								</tbody>
+							</table>
+
+
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-6 col-sm-offset-3">
+										<button (click)="registrarGrupo()" class="form-control btn btn-addSub">REGISTRAR</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<hr>
 				</div>				
 			</div>
 		</div>
@@ -46,7 +96,7 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 col-md-offset-1">
+		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-login">
 				<div class="panel-heading">
 					<table class="table text-center table-hover">

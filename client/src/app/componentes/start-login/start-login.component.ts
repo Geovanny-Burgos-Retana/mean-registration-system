@@ -33,11 +33,11 @@ export class StartLoginComponent implements OnInit {
 			            	"carnet": user.carnet
 			            }
 			        };
-			    	this.router.navigate(['user-details'], navigationExtras);
+			    	//this.router.navigate(['user-details'], navigationExtras);
 					if (user.tipo == "estudiante") {      				
-      					this.router.navigate(['registration'], navigationExtras);
+      					this.router.navigate(['student-menu'], navigationExtras);
     				} else if (user.tipo == "profesor") {
-      					this.router.navigate(['profesor']);
+      					this.router.navigate(['teacher-menu']);
     				}
 				} else {
 					alert("Usuario incorrecto");

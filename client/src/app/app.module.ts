@@ -12,7 +12,7 @@ import { MateriaService } from './services/materia.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ProfesorComponent } from './profesor/profesor.component';
+//import { ProfesorComponent } from './profesor/profesor.component';
 //import { MallaComponent } from './componentes-profesor/malla/malla.component';
 //import { GrupoComponent } from './componentes-profesor/grupo/grupo.component';
 //import { UniversidadComponent } from './universidad/universidad.component';
@@ -29,13 +29,15 @@ import { GroupComponent } from './componentes/componentes-profesor/group/group.c
 import { CurriculumDetailsComponent } from './componentes/detalles/curriculum-details/curriculum-details.component';
 import { AssistanceComponent } from './componentes/componentes-profesor/assistance/assistance.component';
 import { ScoresComponent } from './componentes/componentes-profesor/scores/scores.component';
-import { RegistrationComponent } from './componentes/componenetes-estudiante/registration/registration.component';
+import { RegistrationComponent } from './componentes/componentes-estudiante/registration/registration.component';
+import { TeacherMenuComponent } from './componentes/teacher-menu/teacher-menu.component';
+import { StudentMenuComponent } from './componentes/student-menu/student-menu.component';
+import { AssignmentsComponent } from './componentes/componentes-estudiante/assignments/assignments.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfesorComponent,
     StartLoginComponent,
     RegisterComponent,
     UsersComponent,
@@ -47,7 +49,10 @@ import { RegistrationComponent } from './componentes/componenetes-estudiante/reg
     CurriculumDetailsComponent,
     AssistanceComponent,
     ScoresComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    TeacherMenuComponent,
+    StudentMenuComponent,
+    AssignmentsComponent
   ],
   imports: [
     BrowserModule,

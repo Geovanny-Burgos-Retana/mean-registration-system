@@ -108,6 +108,9 @@ router.put('/course/update', (req, res, next) => {
     if (curso.universidad) {
         updateCurso.universidad = curso.universidad;
     }
+    if (curso.asignaciones) {
+        updateCurso.asignaciones = curso.asignaciones;
+    }
     if(!updateCurso) {
         res.status(400);
         res.json({'error': 'bad request'});
