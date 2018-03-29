@@ -25,16 +25,19 @@ export class StartLoginComponent implements OnInit {
 	iniciarSecion(){
 		this.usuarioService.readUsuario(this.usuario, this.contrasenia)
 			.subscribe(user => {
+				console.log(user);
 				if (user != null) {
 					const navigationExtras: NavigationExtras = {
 			            queryParams: {
 			            	"_id": user._id,
 			            	"nombre": user.nombre,
-			            	"carnet": user.carnet
+			            	"carnet": user.carnet,
+			            	"carrera": user.carrera,
+			            	"escuela": user.escuela,
+			            	"universidad": user.universidad			            	
 			            }
 			        };
-			    	//this.router.navigate(['user-details'], navigationExtras);
-					if (user.tipo == "estudiante") {      				
+					if (user.tipo == "estudiante") {				
       					this.router.navigate(['student-menu'], navigationExtras);
     				} else if (user.tipo == "profesor") {
       					this.router.navigate(['teacher-menu']);

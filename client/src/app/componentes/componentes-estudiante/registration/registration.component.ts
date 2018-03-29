@@ -28,12 +28,16 @@ export class RegistrationComponent implements OnInit {
             usuario:'',
             contrasena:'',
             tipo:''
-        }
+        };
         this.recievedData.queryParams.subscribe(params => {
             this.user._id = params["_id"];
             this.user.nombre = params["nombre"];
             this.user.carnet = params["carnet"];
+            this.user.escuela = params["escuela"];
+            this.user.carrera = params["carrera"];
+            this.user.universidad = params["universidad"];
         });
+        console.log(this.user);
 		this.cargarCursos();
 	}
 
