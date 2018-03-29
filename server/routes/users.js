@@ -126,7 +126,6 @@ router.put('/user/update', (req, res, next) => {
 
 //Eliminar usuario
 router.delete('/user/delete/:_id', (req, res, next) => {
-    console.log("Delete User");
     db.usuario.remove({_id: mongojs.ObjectId(req.params._id)}, (err, usuario) => {
         if (err) {res.send(err);}
         res.json(usuario);

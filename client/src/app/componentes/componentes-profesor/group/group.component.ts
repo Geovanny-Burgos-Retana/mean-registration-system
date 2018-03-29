@@ -62,7 +62,7 @@ export class GroupComponent implements OnInit {
 				tipo: this.selectedTipo,
 				num: Number(this.num),
 				porcentaje: Number(this.porcentaje),
-				fecha: new Date(this.fecha.toString())
+				fecha: new Date(this.fecha.toString()).toLocaleDateString().toString()
 			}
 			this.sum = this.sum + parseFloat(asignacion.porcentaje.toString());
 			this.curso.asignaciones.push(asignacion);

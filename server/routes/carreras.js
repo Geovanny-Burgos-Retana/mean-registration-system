@@ -72,8 +72,7 @@ router.put('/curriculum/update', (req, res, next) => {
 });
 
 //Eliminar malla curricular
-router.delete('/curriculum/delete/:_id', (req, res, next) => {    
-	console.log(req.params._id);
+router.delete('/curriculum/delete/:_id', (req, res, next) => {
     db.carrera.remove({_id: mongojs.ObjectId(req.params._id)}, (err, carrera) => {
         if (err) {res.send(err);}
         res.json(carrera);

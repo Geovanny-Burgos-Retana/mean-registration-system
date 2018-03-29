@@ -13,7 +13,6 @@ router.get('/subject/get', (req, res, next) => {
 //Guardar materia(s)
 router.post('/subject/create', (req, res, next) => {
     const subject = req.body;
-    console.log(subject);
     db.materia.save(subject, (err, subject) => {
         if (err) return next(err);
         res.json(subject);
@@ -23,7 +22,6 @@ router.post('/subject/create', (req, res, next) => {
 //Actualizar materia
 router.put('/subject/update', (req, res, next) => {
     const subject = req.body;
-    console.log(subject.nombre);
     let updateSubject = {};
     
     if(subject.nombre) {
