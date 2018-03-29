@@ -16,7 +16,6 @@ import { AssignmentsComponent } from '../componentes/componentes-estudiante/assi
 
 import { UserDetailsComponent } from '../componentes/detalles/user-details/user-details.component';
 import { UniversityDetailsComponent } from '../componentes/detalles/university-details/university-details.component';
-import { CurriculumDetailsComponent } from '../componentes/detalles/curriculum-details/curriculum-details.component';
 
 const routes: Routes = [
       {
@@ -51,10 +50,6 @@ const routes: Routes = [
       {
         path:'curriculums',
         component: CurriculumComponent
-      },
-      {
-        path:'curriculum-details',
-        component: CurriculumDetailsComponent
       },
       {
         path:'group',

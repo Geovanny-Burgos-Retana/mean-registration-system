@@ -70,4 +70,12 @@ router.get('/subject/get/:career/:subject', function(req, res, next){
     });
 });
 
+//Eliminar materias por nombre de carrera
+router.delete('/subject/deleteForCareer/:career', (req, res, next) => {    
+    db.materia.remove({carrera: req.params.career}, (err, subject) => {
+        if (err) {res.send(err);}
+        res.json(subject);
+    });
+});
+
 module.exports = router;

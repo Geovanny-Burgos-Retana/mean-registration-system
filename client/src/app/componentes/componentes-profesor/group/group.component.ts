@@ -30,14 +30,22 @@ export class GroupComponent implements OnInit {
 
     num: String;
     porcentaje: String;
-    fecha: string;
+    fecha: String;
     mydate = new Date('2014-04-03');
 
     sum: number = 0;
 
 
-	constructor(private router:Router, private cursoService:CursoService, private usuarioService:UsuarioService, private universidadService:UniversidadService) { 
+	constructor(private router:Router, private cursoService:CursoService, private usuarioService:UsuarioService, private universidadService:UniversidadService) { 		
+		this.cursoService.readGrupos()
+			.subscribe(courses => {
+				this.cursos = courses;
+			});
+	}
+
+	ngOnInit() {
 		this.curso = {
+			_id:'',
 			nombre: '',
 			numeroGrupo: '',
 			profesor: '',
@@ -46,14 +54,6 @@ export class GroupComponent implements OnInit {
 			universidad: '',
 			asignaciones: []			
 		}
-		this.cursoService.readGrupos()
-			.subscribe(courses => {
-				this.cursos = courses;
-			});
-	}
-
-	ngOnInit() {
-	
 	}
 
 	agregarAsignacion() {
@@ -62,88 +62,101 @@ export class GroupComponent implements OnInit {
 				tipo: this.selectedTipo,
 				num: Number(this.num),
 				porcentaje: Number(this.porcentaje),
-				fecha: new Date("23-08-1997")
+				fecha: new Date(this.fecha.toString())
 			}
 			this.sum = this.sum + parseFloat(asignacion.porcentaje.toString());
-			console.log(this.sum);
 			this.curso.asignaciones.push(asignacion);
-
 		} catch (err) {
 			alert("Parseo incorrecto");
 		}
 	}
 
 	eliminarAsignacion(asignacion: Asignacion) {
-		console.log(asignacion.tipo, asignacion.num);
 		for (var i = 0; i < this.curso.asignaciones.length; ++i) {
 			if(this.curso.asignaciones[i].tipo == asignacion.tipo && this.curso.asignaciones[i].num == asignacion.num){
-				this.curso.asignaciones.slice(i, 1);
+				this.sum = this.sum - parseFloat(asignacion.porcentaje.toString());
+				this.curso.asignaciones.splice(i,1);				
 			}
 		}
 	}
 
+	/*
+        -Crear grupo si _id == ""
+        -Actualizar si _id != ""
+        -Ademas de validacion de universidad y usuario
+    */
 	registrarGrupo() {
-    	this.universidadService.readUniversidad(this.curso.universidad)
-		.subscribe(university => {
-			if (university != null) {
-				this.usuarioService.readUsuarioName(this.curso.profesor)
-				.subscribe(user => {
-					if (user != null && this.sum <= 1.00001) {
-						this.cursoService.createGrupo(this.curso)
-						.subscribe(course => {
-							if (course != null) {
-	                            this.curso.nombre = '';
-	                            this.curso.estudiantes = [];
-	                            this.curso.horario = '';
-	                            this.curso.numeroGrupo = '';
-	                            this.curso.profesor = '';
-	                            this.curso.universidad = '';
-	                            this.cursoService.readGrupos()
-                                .subscribe(courses => {
-                                    this.cursos = courses;
-                                });
-								alert("Registrada exitosamente!");
+		this.universidadService.readUniversidad(this.curso.universidad)
+			.subscribe(universidad => {
+				if (universidad != null) {
+					this.usuarioService.readUsuarioName(this.curso.profesor)
+						.subscribe(usuario => {
+							if (usuario != null && this.curso._id == "") {
+								this.cursoService.createGrupo(this.curso)
+									.subscribe(curso => {
+										this.cursoService.readGrupos()
+											.subscribe(cursos => {
+												this.cursos = cursos;
+											});
+									});
+								this.clearData();
+							} else if (usuario != null && this.curso._id != "") {
+								this.cursoService.updateGrupo(this.curso)
+									.subscribe(curso => {
+										this.cursoService.readGrupos()
+											.subscribe(cursos => {
+												this.cursos = cursos;
+											});
+									});
+								this.clearData();
 							} else {
-								alert("No registrado");
+								console.log("Usuario inexistente");
 							}
 						});
-					} else {
-						alert("Usuario inexistente/ Procentajes incorrectos");
-					}
-				});
-			} else {
-				alert("Universidad inexistente");
-			}
-		});
+				} else {
+					console.log("Universidad inexistente");
+				}
+			});		
+	}
+
+	/*
+        -Limpiar campos para empezar un nuevo registro
+    */
+    clearData() {
+        this.curso._id = "";
+        this.curso.nombre = '';
+        this.curso.numeroGrupo = '';
+        this.curso.profesor = '';
+        this.curso.estudiantes = [];
+        this.curso.horario = '';
+        this.curso.universidad = '';
+        this.curso.asignaciones = [];
+        this.num = "";
+        this.porcentaje = "";
+        this.fecha = "";
     }
 
-    editarGrupo(course:Curso) {
-    	const navigationExtras: NavigationExtras = {
-            queryParams: {
-            	"_id": course._id,
-                "nombre": course.nombre,
-                "estudiantes": course.estudiantes,
-                "numeroGrupo": course.numeroGrupo,
-                "profesor": course.profesor,
-                "horario": course.horario,
-                "universidad": course.universidad
-            }
-        };
-    	this.router.navigate([''], navigationExtras);
+    /*
+        -Cargar datos de un grupo para editarlo
+    */
+    editarGrupo(course:Curso) {    	
+    	this.curso = course;
+    	this.sum = 0;
+    	for (var i = 0; i < course.asignaciones.length; ++i) {
+    		this.sum += parseFloat(course.asignaciones[i].porcentaje.toString());
+    	}
     }
 
+    /*
+		-Eliminar grupo de la tabla y la DB
+    */
     eliminarGrupo(course:Curso) {
       	this.cursoService.deleteGrupo(course._id)
-  		.subscribe(course => {
-  			if (course != null) {
+	  		.subscribe(course => {	  			
   				this.cursoService.readGrupos()
 					.subscribe(cursos => {
 						this.cursos = cursos;
 					});
-  			} else {
-  				alert("Error al eliminar");
-  			}
-  		});
+	  		});
     }
-
 }

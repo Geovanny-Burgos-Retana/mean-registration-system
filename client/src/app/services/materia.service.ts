@@ -39,4 +39,9 @@ export class MateriaService {
         return this.http.get<Materia[]>(`${this.domain}/api/subject/get/${carrera}/${materia}`)
           .map(res => res);
     }
+
+    deleteSubjectsForCareer(carrera: String):Observable<Materia[]>{
+        return this.http.delete<Materia[]>(`${this.domain}/api/subject/deleteForCareer/${carrera}`)
+          .map(res => res);
+    }
 }

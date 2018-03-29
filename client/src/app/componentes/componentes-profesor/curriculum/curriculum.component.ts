@@ -32,36 +32,40 @@ export class CurriculumComponent implements OnInit {
     materiaSeleccionada: Materia;
     temaSeleccionado: String;
 
+    materiasEliminadas:String[];
+
 	constructor(private router:Router, private carreraService:CarreraService, private materiaService: MateriaService) {
-		this.carrera = {
-			nombre: '',
-			materias: []
-		}
+		this.carreraService.readMallas()
+    	    .subscribe(curriculums => {
+    	        this.carreras = curriculums;
+          	});
+	}
+
+	ngOnInit() {
+	    this.carrera = {
+            _id:'',
+            nombre: '',
+            materias: []
+        }
+        
         this.materiaSeleccionada = {
             nombre:'',
             carrera:'',
             temas:[]
         }
-        this.materias = [];
-		this.carreraService.readMallas()
-	      	.subscribe(curriculums => {
-	        this.carreras = curriculums;
-      	});	
-	}
 
-	ngOnInit() {
-	
+        this.materias = [];
+        this.materiasEliminadas = [];
 	}
 
 	agregarMateria() {
     	if (this.materia != '') {
 			var materia:Materia = {
                 nombre: this.materia,
-                carrera: this.nombre,
+                carrera: this.carrera.nombre,
                 temas:[]
             }            
             this.materias.push(materia);
-            console.log(this.materias);
             this.carrera.materias.push(this.materia);            
             this.materia = '';
     	}
@@ -75,9 +79,11 @@ export class CurriculumComponent implements OnInit {
         }
         for (var i = 0; i < this.materias.length; ++i) {
             if (this.materias[i].nombre == materia) {         
+                this.materiasEliminadas.push(this.materias[i]._id);
                 this.materias.splice(i,1);
             }
         }
+        console.log(this.materias);
     }
 
     editarMateria(materia: Materia) {
@@ -126,81 +132,74 @@ export class CurriculumComponent implements OnInit {
         }
     }
 
-    registrarCarrera() {        
-    	this.carreraService.readMalla(this.nombre)
-		.subscribe(curriculum => {
-			if ( curriculum == null) {
-				this.carrera.nombre = this.nombre;
-				this.carreraService.createMalla(this.carrera)
-				.subscribe(curriculum1 => {
-					if (curriculum1 != null) {
-						this.carrera.nombre = '';
-                        this.carrera.materias = [];
-                        this.carreraService.readMallas()
-                        .subscribe(curriculums => {
-                            this.carreras = curriculums;
+    /*
+        -Crear carrera si _id == ""
+        -Actualizar si _id != ""
+        -Tanto carreras como materias ligadas
+    */
+    registrarCarrera() {
+        if (this.carrera._id == "" && this.carrera.nombre != "") {
+            this.carreraService.createMalla(this.carrera)
+                .subscribe(carrera => {
+                    this.carreraService.readMallas()
+                        .subscribe(carreras => {
+                            this.carreras = carreras;
                         });
-					} else {
-						alert("No registrada");
-					}
-				});
-                this.materiaService.createMaterias(this.materias)
-                    .subscribe(materias => {
-                        if (materias != null) {
-                            this.carrera.nombre = '';
-                            this.carrera.materias = [];
-                            this.materias = [];
-                            this.temas = [];
-                            this.subtemas = [];
-                            this.carreraService.readMallas()
-                            .subscribe(curriculums => {
-                                this.carreras = curriculums;
-                            });
-                        } else {
-                            alert("No registrada");
-                        }
-                    });
-			} else {
-				alert("Ya existe!");
-			}
-		});
-    }
-
-    editarCarrera(carrera:Carrera) {
-    	const navigationExtras: NavigationExtras = {
-            queryParams: {
-            	"_id": carrera._id,
-                "nombre": carrera.nombre,
-                "materias": carrera.materias
-            }
-        };
-    	this.router.navigate(['curriculum-details'], navigationExtras);
-    }
-
-    eliminarCarrera(carrera:Carrera) {
-    	const response = confirm('are you sure to delete it?');
-    	if (response ){
-	      	this.carreraService.deleteMalla(carrera._id)
-	      		.subscribe(curriculum => {
-	      			if (curriculum != null) {
-	      				this.carreraService.readMallas()
-                            .subscribe(curriculums => {
-                                this.carreras = curriculums;
-                            });
-	      				alert("Eliminada exitosamente!");
-	      			} else {
-	      				alert("Error al eliminar");
-	      			}
-	      		});
-	    }        
-    }
-
-    encontrarMateria(nombre:String): Materia {
-        for (var i = 0; i < this.materias.length; ++i) {
-            if (this.materias[i].nombre == nombre) {
-                return this.materias[i];
-            }
+                });
+            this.materiaService.createMaterias(this.materias).subscribe();
+            this.clearData();            
+        } else {
+            this.carreraService.updateMalla(this.carrera)
+                .subscribe(carrera => {
+                    this.carreraService.readMallas()
+                        .subscribe(carreras => {
+                            this.carreras = carreras;
+                        });
+                });
+            this.materiaService.deleteSubjectsForCareer(this.carrera.nombre).subscribe();
+            this.materiaService.createMaterias(this.materias).subscribe();
+            this.clearData();           
         }
-        return null;
+    }
+
+    /*
+        -Limpiar campos para empezar un nuevo registro
+    */
+    clearData() {
+        this.carrera._id = "";
+        this.carrera.nombre = "";
+        this.carrera.materias = [];
+        this.materias = [];
+        this.temas = [];
+        this.subtemas = [];
+        this.materiaSeleccionada.nombre = "";
+        this.temaSeleccionado = "";
+    }
+
+    /*
+        -Cargar datos de una carrera para editarla
+    */
+    editarCarrera(carrera:Carrera) {
+        this.carrera = carrera;
+        this.materiaService.readMateriasGrupo(this.carrera.nombre)
+            .subscribe(materias => {
+                this.materias = materias;
+            });
+    }
+
+    /*
+        -Eliminar carrera
+        -Eliminar materias ligadas
+        -Actualizar lista de carreras
+    */
+    eliminarCarrera(carrera:Carrera) {
+      	this.carreraService.deleteMalla(carrera._id)
+            .subscribe(carrera => {
+                this.carreraService.readMallas()
+                    .subscribe(carreras => {
+                        this.carreras = carreras;
+                    });
+            });
+        this.materiaService.deleteSubjectsForCareer(carrera.nombre).subscribe();        
     }
 }

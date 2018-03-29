@@ -26,7 +26,6 @@ import { UniversityComponent } from './componentes/componentes-profesor/universi
 import { UniversityDetailsComponent } from './componentes/detalles/university-details/university-details.component';
 import { CurriculumComponent } from './componentes/componentes-profesor/curriculum/curriculum.component';
 import { GroupComponent } from './componentes/componentes-profesor/group/group.component';
-import { CurriculumDetailsComponent } from './componentes/detalles/curriculum-details/curriculum-details.component';
 import { AssistanceComponent } from './componentes/componentes-profesor/assistance/assistance.component';
 import { ScoresComponent } from './componentes/componentes-profesor/scores/scores.component';
 import { RegistrationComponent } from './componentes/componentes-estudiante/registration/registration.component';
@@ -46,7 +45,6 @@ import { AssignmentsComponent } from './componentes/componentes-estudiante/assig
     UniversityDetailsComponent,
     CurriculumComponent,
     GroupComponent,
-    CurriculumDetailsComponent,
     AssistanceComponent,
     ScoresComponent,
     RegistrationComponent,

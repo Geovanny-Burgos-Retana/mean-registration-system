@@ -78,7 +78,7 @@ router.get('/course/get', (req, res, next) => {
 
 //Crear curso
 router.post('/course/create', (req, res, next) => {
-    const curso = req.body;
+    const curso = req.body;    
     db.curso.save(curso, (err, course) => {
         if (err) return next(err);
         res.json(course);
