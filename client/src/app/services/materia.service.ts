@@ -7,7 +7,7 @@ import { Materia } from '../objects/Materia';
 
 @Injectable()
 export class MateriaService {
-	domain: string = 'http://localhost:3000';
+	  domain: string = 'http://localhost:3000';
     constructor(private http: HttpClient) {} 
 
     createMaterias(materias: Materia[]):Observable<Materia[]>{    

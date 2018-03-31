@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras} from '@angular/router';
 
 import { User } from '../../objects/Usuario';
+import { Curso } from '../../objects/Curso';
+
+import { CursoService } from '../../services/curso.service';
 
 import { Observable } from 'rxjs';
 
@@ -21,7 +24,9 @@ export class StudentMenuComponent implements OnInit {
 
     user: User;
 
-	constructor(private router:Router, private recievedData: ActivatedRoute) {
+    cursosMatriculados: Curso[];
+
+	constructor(private router:Router, private recievedData: ActivatedRoute, private cursoService:CursoService) {
         this.user = {
             _id:'',
             nombre:'',
@@ -41,13 +46,17 @@ export class StudentMenuComponent implements OnInit {
             this.user.carrera = params["carrera"];
             this.user.universidad = params["universidad"];
         });
+        this.cursoService.readCourseStudent(this.user.carnet)
+            .subscribe(cursos => {
+                this.cursosMatriculados = cursos;
+            });
 	}
 
 	ngOnInit() {
 
 	}
 
-	matricula() {
+	matricula() {        
 		const navigationExtras: NavigationExtras = {
             queryParams: {
                 "_id": this.user._id,
@@ -60,5 +69,25 @@ export class StudentMenuComponent implements OnInit {
         };
         this.router.navigate(['registration'], navigationExtras);
 	}
+
+    malla() {
+        const navigationExtras: NavigationExtras = {
+            queryParams: {
+                "carrera": this.user.carrera
+            }
+        };
+        this.router.navigate(['show-curriculum'], navigationExtras);
+    }
+
+    verCurso(curso: Curso) {
+        const navigationExtras: NavigationExtras = {
+            queryParams: {
+                "_idGrupo": curso._id,
+                "nombre": this.user.nombre,
+                "carnet": this.user.carnet
+            }
+        };
+        this.router.navigate(['show-group'], navigationExtras);
+    }
 
 }

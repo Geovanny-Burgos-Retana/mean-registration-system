@@ -13,6 +13,8 @@ import { GroupComponent } from '../componentes/componentes-profesor/group/group.
 import { RegistrationComponent } from '../componentes/componentes-estudiante/registration/registration.component';
 import { StudentMenuComponent } from '../componentes/student-menu/student-menu.component';
 import { AssignmentsComponent } from '../componentes/componentes-estudiante/assignments/assignments.component';
+import { ShowCurriculumComponent } from '../componentes/componentes-estudiante/show-curriculum/show-curriculum.component';
+import { ShowGroupComponent } from '../componentes/componentes-estudiante/show-group/show-group.component';
 
 import { UserDetailsComponent } from '../componentes/detalles/user-details/user-details.component';
 import { UniversityDetailsComponent } from '../componentes/detalles/university-details/university-details.component';
@@ -67,6 +69,14 @@ const routes: Routes = [
       {
         path:'assignment',
         component: AssignmentsComponent
+      },
+      {
+        path:'show-curriculum',
+        component: ShowCurriculumComponent
+      },
+      {
+        path:'show-group',
+        component: ShowGroupComponent
       }
   ];
 
