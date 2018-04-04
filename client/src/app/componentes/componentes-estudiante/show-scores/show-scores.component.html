@@ -3,21 +3,29 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- Include the above in your HEAD tag -->
 
-<div class="container">
-	<div class="row col-md-10 col-md-offset-1 row col-lg-12 panel panel-login panel-heading">
+<header class="col-md-12 panel panel-login panel-heading">
+	<h1>NOTAS</h1>
+	<label>Significado de siglas</label>
+	<label>* T#: Tarea número X</label>
+	<label>* P#: Proyecto número X</label>
+	<label>* Q#: Quiz número X</label>
+</header>
+
+<div>
+	<div class="row panel panel-login panel-heading">
 		<table class="table text-center table-hover">
 			<thead>
 			<tr>
-			  	<th>Tipo</th>
-			  	<th>Numero</th>
+			  	<th>Carnet</th>
+			  	<th *ngFor="let a of curso.asignaciones"> {{ a.tipo[0].toUpperCase() + a.num.toString() + " - " + a.porcentaje.toString() + "%" }} </th>
 			  	<th>Nota</th>
 			</tr>
 			</thead>
 			<tbody>
-			<tr *ngFor="let asignacion of evaluacion.asignaciones">
-			  	<td class="text-left">{{ asignacion.tipo }}</td>
-			  	<td class="text-left">{{ asignacion.num }}</td>
-			  	<td class="text-left">{{ asignacion.nota }}</td>
+			<tr *ngFor="let e of evaluaciones">
+			  	<td class="text-left">{{ e.carnet }}</td>
+			  	<td class="text-left" *ngFor="let n of e.asignaciones"> {{n.nota}} </td>
+			  	<td> {{ calcularNota(e).toString() }} </td>
 			</tr>
 			</tbody>
 		</table>

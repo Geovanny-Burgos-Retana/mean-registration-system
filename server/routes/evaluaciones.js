@@ -27,4 +27,23 @@ router.get('/assignment/get/assignmentGrupoCarnet/:idGrupo/:carnet', function(re
     });
 });
 
+//Actualizar evaluacion
+router.put('/assignment/update', (req, res, next) => {
+    const evaluacion = req.body;
+    let updateEvaluacion = {};
+    
+    updateEvaluacion.grupo = evaluacion.grupo;
+    updateEvaluacion.carnet = evaluacion.carnet;
+    updateEvaluacion.asignaciones = evaluacion.asignaciones;
+    if(!updateEvaluacion) {
+        res.status(400);
+        res.json({'error': 'bad request'});
+    } else {
+        db.evaluacion.update({_id: mongojs.ObjectId(evaluacion._id)}, updateEvaluacion, {}, (err, course) => {
+            if (err) return next(err);
+            res.json(course);
+        });
+    }
+});
+
 module.exports = router;

@@ -167,16 +167,20 @@ div div label {
 
 div div button {
     padding: 10px 20px;
-    display: block;
     text-decoration: none;
+    display: inline-block;
 }
 
-div div button i {
-    
+div div input {
+  padding: 10px 20px;
+  width: 85%;
+  display: inline-block;
+  text-decoration: none;
 }
 
 div div {
-    width: 95%;
+    float: left;
     max-width: 1000px;
     margin: 20px auto;    
+    overflow: hidden;
 }

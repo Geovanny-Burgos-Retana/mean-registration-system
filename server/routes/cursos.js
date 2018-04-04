@@ -88,4 +88,12 @@ router.get('/course/getCursosImpartidosProfesor/:nombre', function(req, res, nex
     });
 });
 
+//Obtener curso por (nombre, numeroGrupo)
+router.get('/course/getGruopWithId/:_id', function(req, res, next){
+    db.curso.findOne({_id: mongojs.ObjectId(req.params._id)}, function(err, curso){
+        if(err){res.send(err);}
+        res.json(curso);
+    });
+});
+
 module.exports = router;

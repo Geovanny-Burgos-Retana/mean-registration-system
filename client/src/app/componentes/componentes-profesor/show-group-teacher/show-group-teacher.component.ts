@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 
 import { Mensaje } from '../../../objects/Mensaje';
 
@@ -50,15 +50,16 @@ export class ShowGroupTeacherComponent implements OnInit {
 	}
 
 	evaluaciones() {
-
+		const navigationExtras: NavigationExtras = {
+            queryParams: {
+                "_idGrupo": this.idGrupo
+            }
+        };
+        this.router.navigate(['scores'], navigationExtras);
 	}
 
-	asistencia() {
-
-	}
-
-	mensajesPrivados() {
-
+	asistencia() {		
+		
 	}
 
 }

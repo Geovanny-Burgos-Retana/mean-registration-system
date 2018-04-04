@@ -20,6 +20,11 @@ export class EvaluacionService {
           .map(res => res);
     }
 
+    update(evaluacion: Evaluacion):Observable<Evaluacion>{
+        return this.http.put<Evaluacion>(`${this.domain}/api/assignment/update`, evaluacion)
+          .map(res => res);
+    }
+
     readEvaluacionesGrupoEstudiante(idGrupo: String, carnet : String):Observable<Evaluacion>{
         return this.http.get<Evaluacion>(`${this.domain}/api/assignment/get/assignmentGrupoCarnet/${idGrupo}/${carnet}`)
           .map(res => res);
