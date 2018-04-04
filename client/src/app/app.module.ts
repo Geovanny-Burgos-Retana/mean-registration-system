@@ -10,6 +10,7 @@ import { UniversidadService } from './services/universidad.service';
 import { UsuarioService } from './services/usuario.service';
 import { MateriaService } from './services/materia.service';
 import { EvaluacionService } from './services/evaluacion.service';
+import { ForoService } from './services/foro.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -35,6 +36,7 @@ import { StudentMenuComponent } from './componentes/student-menu/student-menu.co
 import { AssignmentsComponent } from './componentes/componentes-estudiante/assignments/assignments.component';
 import { ShowCurriculumComponent } from './componentes/componentes-estudiante/show-curriculum/show-curriculum.component';
 import { ShowGroupComponent } from './componentes/componentes-estudiante/show-group/show-group.component';
+import { ShowGroupTeacherComponent } from './componentes/componentes-profesor/show-group-teacher/show-group-teacher.component';
 
 
 @NgModule({
@@ -55,7 +57,8 @@ import { ShowGroupComponent } from './componentes/componentes-estudiante/show-gr
     StudentMenuComponent,
     AssignmentsComponent,
     ShowCurriculumComponent,
-    ShowGroupComponent
+    ShowGroupComponent,
+    ShowGroupTeacherComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { ShowGroupComponent } from './componentes/componentes-estudiante/show-gr
     UniversidadService,
     UsuarioService,
     MateriaService,
-    EvaluacionService
+    EvaluacionService,
+    ForoService
   ],
   bootstrap: [AppComponent]
 })

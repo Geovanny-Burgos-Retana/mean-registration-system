@@ -18,7 +18,7 @@
 						  	<td>{{ usuario.nombre }}</td>
 						  	<td>{{ usuario.carnet }}</td>
 						  	<td>{{ usuario.universidad }}</td>
-						  	<td>{{ usuario.tipo }}</td>
+						  	<td>{{ usuario.tipo.toUpperCase() }}</td>
 						  	<td>
 						  		<button class="btn btn-success" (click)="editarUsuario(usuario)">
 						      	<i class="fa fa-edit"></i>

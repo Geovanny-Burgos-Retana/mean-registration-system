@@ -1,10 +1,51 @@
-<h1>SISTEMA INGREGASO COMO PROFESOR</h1>
-<nav>
-  <a routerLink="/curriculums">Maya Curricular</a>
-  <a routerLink="/group">Grupo</a>
-  <a routerLink="/falta-definir-ruta">Registro notas</a>
-  <a routerLink="/falta-definir-ruta">Asistencia</a>  
-  <a routerLink="/universities">Universidades</a>
-  <a routerLink="/users">Usuarios</a>
-</nav>
+<header>
+	<h2>SISTEMA INGRESADO COMO PROFESOR</h2>
+	<label>Universidad: {{ user.universidad }} </label>
+	<label>Escuela: {{ user.escuela }} </label>
+	<label>Profesor logeado: {{ user.nombre }} </label>
+	<nav>
+		<ul>			
+			<li><a (click)="malla()">Malla curricular</a></li>
+			<li><a (click)="grupo()">CRUD Grupo</a></li>
+			<li><a (click)="universidad()">CRUD Universidad</a></li>
+			<li><a (click)="usuario()">CRUD Usuario</a></li>
+		</ul>
+	</nav>
+</header>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row">
+				<div class="col-lg-12">	
+					<div class="panel panel-login">
+						<div class ="panel-heading">
+							<table class="table text-center table-hover">
+								<thead>
+								<tr>
+								  	<th>Grupo</th>
+								  	<th># Grupo</th>
+								  	<th>Profesor</th>
+								  	<th></th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr *ngFor="let curso of cursosImpartidos">
+								  	<td class="text-left">{{ curso.nombre }}</td>
+								  	<td class="text-left">{{ curso.numeroGrupo }}</td>
+								  	<td class="text-left">{{ curso.profesor }}</td>
+								  	<td class="text-center">
+								    	<button (click)="verCurso(curso)" class = "btn btn-login">  VER CURSO </button>
+								  	</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <router-outlet></router-outlet>

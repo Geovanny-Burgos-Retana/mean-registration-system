@@ -40,7 +40,7 @@ export class StartLoginComponent implements OnInit {
 					if (user.tipo == "estudiante") {				
       					this.router.navigate(['student-menu'], navigationExtras);
     				} else if (user.tipo == "profesor") {
-      					this.router.navigate(['teacher-menu']);
+      					this.router.navigate(['teacher-menu'], navigationExtras);
     				}
 				} else {
 					alert("Usuario incorrecto");

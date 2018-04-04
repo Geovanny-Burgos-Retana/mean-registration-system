@@ -80,4 +80,12 @@ router.get('/course/get/:carnet', function(req, res, next){
     });
 });
 
+//Obtener cursos que tiene matriculado un estudiante por su carnet
+router.get('/course/getCursosImpartidosProfesor/:nombre', function(req, res, next){
+    db.curso.find({profesor: req.params.nombre}, function(err, curso){
+        if(err){res.send(err);}
+        res.json(curso);
+    });
+});
+
 module.exports = router;

@@ -8,12 +8,13 @@ import { ForoService } from '../../../services/foro.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-show-group',
-  templateUrl: './show-group.component.html',
-  styleUrls: ['./show-group.component.css']
+  selector: 'app-show-group-teacher',
+  templateUrl: './show-group-teacher.component.html',
+  styleUrls: ['./show-group-teacher.component.css']
 })
-export class ShowGroupComponent implements OnInit {
-	
+export class ShowGroupTeacherComponent implements OnInit {
+
+  
 	idGrupo:String;
 	nombre:String;
 	mensaje: String;

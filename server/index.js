@@ -8,6 +8,7 @@ const cursoRoutes = require('./routes/cursos');
 const carreraRoutes = require('./routes/carreras');
 const materiaRoutes = require('./routes/materia');
 const evaluacionRoutes = require('./routes/evaluaciones');
+const foroRoutes = require('./routes/foro');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/api', cursoRoutes);
 app.use('/api', carreraRoutes);
 app.use('/api', materiaRoutes);
 app.use('/api', evaluacionRoutes);
+app.use('/api', foroRoutes);
 
 app.use(express.static(path.join(__dirname, '../dist')));
 

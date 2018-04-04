@@ -40,6 +40,11 @@ export class CursoService {
           .map(res => res);
     }
 
+    readCourseProfesor(nombre: String):Observable<Curso[]>{
+        return this.http.get<Curso[]>(`${this.domain}/api/course/getCursosImpartidosProfesor/${nombre}`)
+          .map(res => res);
+    }
+
 /*
     getCurso(name, numero):Observable<Curso>{  		
   		console.log(name);
