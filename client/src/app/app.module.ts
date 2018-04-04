@@ -37,6 +37,8 @@ import { AssignmentsComponent } from './componentes/componentes-estudiante/assig
 import { ShowCurriculumComponent } from './componentes/componentes-estudiante/show-curriculum/show-curriculum.component';
 import { ShowGroupComponent } from './componentes/componentes-estudiante/show-group/show-group.component';
 import { ShowGroupTeacherComponent } from './componentes/componentes-profesor/show-group-teacher/show-group-teacher.component';
+import { ShowScoresComponent } from './componentes/componentes-estudiante/show-scores/show-scores.component';
+import { ShowAssistanceComponent } from './componentes/componentes-estudiante/show-assistance/show-assistance.component';
 
 
 @NgModule({
@@ -58,7 +60,9 @@ import { ShowGroupTeacherComponent } from './componentes/componentes-profesor/sh
     AssignmentsComponent,
     ShowCurriculumComponent,
     ShowGroupComponent,
-    ShowGroupTeacherComponent
+    ShowGroupTeacherComponent,
+    ShowScoresComponent,
+    ShowAssistanceComponent
   ],
   imports: [
     BrowserModule,

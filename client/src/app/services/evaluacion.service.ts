@@ -19,4 +19,10 @@ export class EvaluacionService {
         return this.http.delete<Evaluacion>(`${this.domain}/api/assignment/delete_group_carnet/${idGrupo}/${carnet}`)
           .map(res => res);
     }
+
+    readEvaluacionesGrupoEstudiante(idGrupo: String, carnet : String):Observable<Evaluacion>{
+        return this.http.get<Evaluacion>(`${this.domain}/api/assignment/get/assignmentGrupoCarnet/${idGrupo}/${carnet}`)
+          .map(res => res);
+    }
+
 }

@@ -83,9 +83,11 @@ export class StudentMenuComponent implements OnInit {
         const navigationExtras: NavigationExtras = {
             queryParams: {
                 "_idGrupo": curso._id,
-                "nombre": this.user.nombre
+                "nombre": this.user.nombre,
+                "carnet": this.user.carnet
             }
         };
+        console.log(this.user.carnet);
         this.router.navigate(['show-group'], navigationExtras);
     }
 

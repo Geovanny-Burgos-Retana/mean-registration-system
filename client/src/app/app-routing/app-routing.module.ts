@@ -15,6 +15,9 @@ import { StudentMenuComponent } from '../componentes/student-menu/student-menu.c
 import { AssignmentsComponent } from '../componentes/componentes-estudiante/assignments/assignments.component';
 import { ShowCurriculumComponent } from '../componentes/componentes-estudiante/show-curriculum/show-curriculum.component';
 import { ShowGroupComponent } from '../componentes/componentes-estudiante/show-group/show-group.component';
+import { ShowScoresComponent } from '../componentes/componentes-estudiante/show-scores/show-scores.component';
+import { ShowAssistanceComponent } from '../componentes/componentes-estudiante/show-assistance/show-assistance.component';
+
 
 import { ShowGroupTeacherComponent } from '../componentes/componentes-profesor/show-group-teacher/show-group-teacher.component';
 import { UserDetailsComponent } from '../componentes/detalles/user-details/user-details.component';
@@ -82,6 +85,14 @@ const routes: Routes = [
       {
         path:'show-group-teacher',
         component: ShowGroupTeacherComponent
+      },
+      {
+        path:'show-scores',
+        component: ShowScoresComponent
+      },
+      {
+        path:'show-assistance',
+        component: ShowAssistanceComponent
       }
   ];
 

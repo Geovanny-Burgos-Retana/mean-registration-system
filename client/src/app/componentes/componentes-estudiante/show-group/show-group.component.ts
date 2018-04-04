@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 
 import { Mensaje } from '../../../objects/Mensaje';
 
@@ -16,6 +16,8 @@ export class ShowGroupComponent implements OnInit {
 	
 	idGrupo:String;
 	nombre:String;
+	carnet:String;
+
 	mensaje: String;
 	mensajes:Mensaje[] = [];
 
@@ -23,6 +25,7 @@ export class ShowGroupComponent implements OnInit {
 		this.recievedData.queryParams.subscribe(params => {
             this.idGrupo = params["_idGrupo"];
             this.nombre = params["nombre"];
+            this.carnet = params["carnet"];
         });
 	}
 
@@ -49,15 +52,25 @@ export class ShowGroupComponent implements OnInit {
 	}
 
 	evaluaciones() {
-
+		const navigationExtras: NavigationExtras = {
+            queryParams: {
+                "_idGrupo": this.idGrupo,
+                "nombre": this.nombre,
+                "carnet": this.carnet
+            }
+        };
+        this.router.navigate(['show-scores'], navigationExtras);
 	}
 
 	asistencia() {
-
-	}
-
-	mensajesPrivados() {
-
+		const navigationExtras: NavigationExtras = {
+            queryParams: {
+                "_idGrupo": this.idGrupo,
+                "nombre": this.nombre,
+                "carnet": this.carnet
+            }
+        };
+        this.router.navigate(['show-assistance'], navigationExtras);
 	}
 
 }

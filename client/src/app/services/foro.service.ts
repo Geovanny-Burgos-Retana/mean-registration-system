@@ -7,10 +7,10 @@ import { Mensaje } from '../objects/Mensaje';
 
 @Injectable()
 export class ForoService {
-	domain: string = 'http://localhost:3000';
-	constructor(private http: HttpClient) { }
+  	domain: string = 'http://localhost:3000';
+  	constructor(private http: HttpClient) { }
 
-	create(mensajes: Mensaje[]):Observable<Mensaje[]>{
+	  create(mensajes: Mensaje[]):Observable<Mensaje[]>{
         return this.http.post<Mensaje[]>(`${this.domain}/api/foro/create`, mensajes)
           .map(res => res);
     }
