@@ -11,6 +11,7 @@ import { UsuarioService } from './services/usuario.service';
 import { MateriaService } from './services/materia.service';
 import { EvaluacionService } from './services/evaluacion.service';
 import { ForoService } from './services/foro.service';
+import { AsistenciaService } from './services/asistencia.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -77,7 +78,8 @@ import { ShowAssistanceComponent } from './componentes/componentes-estudiante/sh
     UsuarioService,
     MateriaService,
     EvaluacionService,
-    ForoService
+    ForoService,
+    AsistenciaService
   ],
   bootstrap: [AppComponent]
 })

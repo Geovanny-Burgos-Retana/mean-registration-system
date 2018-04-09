@@ -58,8 +58,13 @@ export class ShowGroupTeacherComponent implements OnInit {
         this.router.navigate(['scores'], navigationExtras);
 	}
 
-	asistencia() {		
-		
+	asistencia() {
+		const navigationExtras: NavigationExtras = {
+            queryParams: {
+                "_idGrupo": this.idGrupo
+            }
+        };
+        this.router.navigate(['assistance'], navigationExtras);
 	}
 
 }

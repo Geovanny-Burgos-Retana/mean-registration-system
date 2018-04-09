@@ -4,24 +4,34 @@
 <!-- Include the above in your HEAD tag -->
 
 <header class="col-md-12 panel panel-login panel-heading">
-	<h1>NOTAS</h1>
+	<form>
+		<div class="col-md-10 col-md-offset-1 panel panel-login panel-heading">
+			<input type="text" name="profesor" tabindex="0" class="form-control col-md-11" placeholder="Ingrese fecha de paso de asistencia. Formato: AAAA-MM-DD" [(ngModel)]="fecha" value="">
+			<button class="btn btn-success" (click)="cargarFecha()">Cargar estudiantes</button>
+		</div>
+	</form>
 </header>
 
-<div class="container">
-	<div class="row col-md-12 col-md-offset-1 row col-lg-12 panel panel-login panel-heading">
+<div>
+	<div class="col-md-10 col-md-offset-1 panel panel-login panel-heading">
 		<table class="table text-center table-hover">
 			<thead>
 			<tr>
 			  	<th>Carnet</th>
-			  	<th *ngFor="let p of prueba"> {{ p[0]+1 }} </th>
+			  	<th>Presente</th>
 			</tr>
 			</thead>
 			<tbody>
-			<tr *ngFor="let mensaje of mensajes">
-			  	<td class="text-left">{{ mensaje.emisor }}</td>
-			  	<td class="text-left">{{ mensaje.mensaje }}</td>
+			<tr *ngFor="let a of asistenciasTemp">
+			  	<td class="text-left"> {{ a.carnet }} </td>
+			  	<td><input type="checkbox" [checked]="a.asistencias[0].presente" (click)="cambiarPresencia(a)"></td>
 			</tr>
 			</tbody>
 		</table>
+	</div>
+	<div class="col-md-10 col-md-offset-1 panel panel-login panel-heading">
+		<button class="btn btn-success" (click)="actualizarNotas()">			
+		REGISTRAR ASISTENCIA
+    	</button>
 	</div>
 </div>

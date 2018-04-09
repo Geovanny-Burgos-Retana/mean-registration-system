@@ -17,47 +17,34 @@ import { Observable } from 'rxjs';
 export class ShowScoresComponent implements OnInit {
 
 	idGrupo:String;
-
+	carnet:String;
+	evaluacion:Evaluacion;
 	curso:Curso;
-
-	evaluaciones:Evaluacion[] = [];
 
 	constructor(private router:Router, private recievedData: ActivatedRoute, private evaluacionService:EvaluacionService, private cursoService:CursoService) {
 		this.recievedData.queryParams.subscribe(params => {
             this.idGrupo = params["_idGrupo"];
+            this.carnet = params["carnet"];
         });
-        this.curso = {
-			_id:"",
-			estudiantes: [],
-			nombre: "",
-			numeroGrupo: "",
-			profesor: "",
-			horario: "",
-			universidad:"",
-			asignaciones:[]
-		}
-		this.cursoService.readGrupoConID(this.idGrupo)
-			.subscribe(curso => {
-				this.curso = curso;				
-				for (var i = 0; i < curso.estudiantes.length; ++i) {
-					this.evaluacionService.readEvaluacionesGrupoEstudiante(this.idGrupo, curso.estudiantes[i])
-						.subscribe(evaluacion => {					
-							this.evaluaciones.push(evaluacion);
-						});
-				}
-			});
+        this.cursoService.readGrupoConID(this.idGrupo)
+        .subscribe(curso => {
+        	this.curso = curso;
+        	this.evaluacionService.readEvaluacionesGrupoEstudiante(this.idGrupo, this.carnet)
+	        .subscribe(evaluacion => {
+	        	this.evaluacion = evaluacion;
+	        	console.log(this.evaluacion, this.curso);
+	        });
+        });        	
 	}
 
 	ngOnInit() {
+		
 	}
 
-	calcularNota(e:Evaluacion):Number {
+	calcularNota():Number {
 		var sum:number = 0;
-		console.log("Calculando nota", e);
-		for (var i = 0; i < e.asignaciones.length; ++i) {
-			sum += parseInt(e.asignaciones[i].nota.toString()) * parseFloat(this.curso.asignaciones[i].porcentaje.toString());
-			console.log(parseInt(e.asignaciones[i].nota.toString()));
-			console.log(parseInt(this.curso.asignaciones[i].porcentaje.toString()));
+		for (var i = 0; i < this.evaluacion.asignaciones.length; ++i) {
+			sum += parseInt(this.evaluacion.asignaciones[i].nota.toString()) * parseFloat(this.curso.asignaciones[i].porcentaje.toString());
 		}
 		console.log(sum);
 		return sum;

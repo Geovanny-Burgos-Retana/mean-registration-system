@@ -159,28 +159,9 @@ header label {
     display: block;
 }
 
-div div label {
-    padding: 10px 20px;
+div div {    
     display: block;
-    text-decoration: none;
-}
-
-div div button {
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-div div input {
-  padding: 10px 20px;
-  width: 85%;
-  display: inline-block;
-  text-decoration: none;
-}
-
-div div {
-    float: left;
     max-width: 1000px;
-    margin: 20px auto;    
+    margin: 20px auto;
     overflow: hidden;
 }

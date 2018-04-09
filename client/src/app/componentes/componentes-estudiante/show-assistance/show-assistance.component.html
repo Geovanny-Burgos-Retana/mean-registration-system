@@ -1,3 +1,27 @@
-<p>
-  show-assistance works!
-</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
+
+<header class="col-md-12 panel panel-login panel-heading">
+	<h1>ASITENCIA</h1>
+</header>
+
+<div>
+	<div class="col-md-12 panel panel-login panel-heading">
+		<table class="table text-center table-hover">
+			<thead>
+			<tr>
+			  	<th>Fecha</th>
+			  	<th>Presente</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr *ngFor="let a of asistencia.asistencias">				
+			  	<td class="text-left">{{ a.fecha }}</td>
+			  	<td class="text-left"> {{ a.presente }} </td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

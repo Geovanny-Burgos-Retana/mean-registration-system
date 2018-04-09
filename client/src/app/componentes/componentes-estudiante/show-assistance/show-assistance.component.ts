@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+
+import { Asistencia } from '../../../objects/Asistencia';
+
+import { AsistenciaService } from '../../../services/asistencia.service';
+
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-show-assistance',
@@ -7,9 +14,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowAssistanceComponent implements OnInit {
 
-  constructor() { }
+	idGrupo:String;
+	carnet:String;
+	asistencia: Asistencia;
 
-  ngOnInit() {
-  }
+	constructor(private router:Router, private recievedData: ActivatedRoute, private asistenciaService: AsistenciaService) {
+		this.recievedData.queryParams.subscribe(params => {
+            this.idGrupo = params["_idGrupo"];
+            this.carnet = params["carnet"];
+        });
+
+        this.asistenciaService.readAsistenciasGrupoEstudiante(this.idGrupo, this.carnet)
+        .subscribe(docAsistencia => {
+        	this.asistencia = docAsistencia;
+        });
+
+	}
+
+	ngOnInit() {
+	}
 
 }

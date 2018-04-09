@@ -5,10 +5,11 @@ import { Curso } from '../../../objects/Curso';
 import { User } from '../../../objects/Usuario';
 import { Evaluacion } from '../../../objects/Evaluacion';
 import { NotaEvaluacion } from '../../../objects/NotaEvaluacion';
+import { Asistencia } from '../../../objects/Asistencia';
 
 import { CursoService } from '../../../services/curso.service';
 import { EvaluacionService } from '../../../services/evaluacion.service';
-
+import { AsistenciaService } from '../../../services/asistencia.service';
 
 import { Observable } from 'rxjs';
 
@@ -23,7 +24,7 @@ export class RegistrationComponent implements OnInit {
 
     cursosMatriculados: String[] = [];
 
-	constructor(private router:Router, private evaluaicionService:EvaluacionService, private courseService:CursoService, private recievedData: ActivatedRoute) { 
+	constructor(private router:Router, private evaluaicionService:EvaluacionService, private courseService:CursoService, private recievedData: ActivatedRoute, private assistanceService:AsistenciaService) { 
         this.user = {
             _id:'',
             nombre:'',
@@ -91,6 +92,7 @@ export class RegistrationComponent implements OnInit {
                 this.cursosMatriculados.splice(i, 1);
             }
         }
+        this.assistanceService.delete(curso._id, this.user.carnet).subscribe();
         this.evaluaicionService.delete(curso._id, this.user.carnet).subscribe();
   		this.courseService.updateGrupo(curso).subscribe();
   	}
@@ -118,9 +120,15 @@ export class RegistrationComponent implements OnInit {
                 itemEvaluacion.num = curso.asignaciones[i].num;
                 evaluacion.asignaciones.push(itemEvaluacion);
             }
+            var asistencia: Asistencia = {
+                grupo: curso._id,
+                carnet: this.user.carnet,
+                asistencias: []
+            }
             this.cursosMatriculados.push(curso.nombre);
             this.evaluaicionService.create(evaluacion).subscribe();
-            this.courseService.updateGrupo(curso).subscribe();    
+            this.assistanceService.create(asistencia).subscribe();
+            this.courseService.updateGrupo(curso).subscribe();            
             curso.isRegistration = true;
         }    	
   	}
