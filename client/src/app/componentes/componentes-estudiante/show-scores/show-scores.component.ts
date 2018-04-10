@@ -21,6 +21,9 @@ export class ShowScoresComponent implements OnInit {
 	evaluacion:Evaluacion;
 	curso:Curso;
 
+	/*
+		-Carga documento con las evaluaciones del estudiante
+	*/
 	constructor(private router:Router, private recievedData: ActivatedRoute, private evaluacionService:EvaluacionService, private cursoService:CursoService) {
 		this.recievedData.queryParams.subscribe(params => {
             this.idGrupo = params["_idGrupo"];
@@ -41,6 +44,9 @@ export class ShowScoresComponent implements OnInit {
 		
 	}
 
+	/*
+		-Calcular la nota final
+	*/
 	calcularNota():Number {
 		var sum:number = 0;
 		for (var i = 0; i < this.evaluacion.asignaciones.length; ++i) {

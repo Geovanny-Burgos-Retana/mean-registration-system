@@ -34,7 +34,9 @@ export class UniversityComponent implements OnInit {
   	
     }
 
-
+    /*
+        -Agregar escuela a universidad en creación
+    */
     agregarEscuela() {
     	if (this.escuela != '') {    
 			this.universidad.escuelas.push(this.escuela);      
@@ -42,6 +44,9 @@ export class UniversityComponent implements OnInit {
     	} 
     }
 
+    /*
+        -Eliminar escuela a universidad en creación
+    */
     eliminarEscuela(nombre) {
     	const response = confirm('are you sure to delete it?');
 	    if (response ){
@@ -53,6 +58,9 @@ export class UniversityComponent implements OnInit {
 	    }
     }
 
+    /*
+        Registrar universidad en DB
+    */
     registrarUniversidad() {
     	this.universidadService.readUniversidad(this.nombre)
     		.subscribe(university => {
@@ -78,6 +86,9 @@ export class UniversityComponent implements OnInit {
     		});
     }
 
+    /*
+        -Redireccionar a editacion de una universidad seleccionada
+    */
     editarUniversidad(universidad:Universidad) {
     	const navigationExtras: NavigationExtras = {
             queryParams: {
@@ -89,6 +100,9 @@ export class UniversityComponent implements OnInit {
     	this.router.navigate(['university-details'], navigationExtras);
     }
 
+    /*
+        -Eliminar universidad de DB
+    */
     eliminarUniversidad(universidad:Universidad) {
     	const response = confirm('are you sure to delete it?');
     	if (response ){

@@ -18,6 +18,9 @@ export class ShowAssistanceComponent implements OnInit {
 	carnet:String;
 	asistencia: Asistencia;
 
+    /*
+        Cargar documento de asistencias del estudiante para mostrarlas en pantallas
+    */
 	constructor(private router:Router, private recievedData: ActivatedRoute, private asistenciaService: AsistenciaService) {
 		this.recievedData.queryParams.subscribe(params => {
             this.idGrupo = params["_idGrupo"];

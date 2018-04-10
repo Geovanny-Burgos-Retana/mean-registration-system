@@ -56,6 +56,10 @@ export class GroupComponent implements OnInit {
 		}
 	}
 
+	/*
+		-Agregar asignación al curso localmente
+		-Actualizar sumatoria de porcentajes
+	*/
 	agregarAsignacion() {
 		try {
 			var asignacion:Asignacion = {
@@ -71,6 +75,10 @@ export class GroupComponent implements OnInit {
 		}
 	}
 
+	/*
+		-Eliminar asignación al curso localmente
+		-Actualizar sumatoria de porcentajes
+	*/
 	eliminarAsignacion(asignacion: Asignacion) {
 		for (var i = 0; i < this.curso.asignaciones.length; ++i) {
 			if(this.curso.asignaciones[i].tipo == asignacion.tipo && this.curso.asignaciones[i].num == asignacion.num){
@@ -83,7 +91,7 @@ export class GroupComponent implements OnInit {
 	/*
         -Crear grupo si _id == ""
         -Actualizar si _id != ""
-        -Ademas de validacion de universidad y usuario
+        -Ademas de validacion de universidad, usuario y sumatoria de porcentajes valida
     */
 	registrarGrupo() {
 		this.universidadService.readUniversidad(this.curso.universidad)
@@ -91,21 +99,23 @@ export class GroupComponent implements OnInit {
 				if (universidad != null) {
 					this.usuarioService.readUsuarioName(this.curso.profesor)
 						.subscribe(usuario => {
-							if (usuario != null && this.curso._id == "") {
+							if (usuario != null && this.curso._id == "" && this.sum <= 1) {
 								this.cursoService.createGrupo(this.curso)
 									.subscribe(curso => {
 										this.cursoService.readGrupos()
 											.subscribe(cursos => {
 												this.cursos = cursos;
+												this.sum = 0;
 											});
 									});
 								this.clearData();
-							} else if (usuario != null && this.curso._id != "") {
+							} else if (usuario != null && this.curso._id != "" && this.sum <= 1) {
 								this.cursoService.updateGrupo(this.curso)
 									.subscribe(curso => {
 										this.cursoService.readGrupos()
 											.subscribe(cursos => {
 												this.cursos = cursos;
+												this.sum = 0;
 											});
 									});
 								this.clearData();

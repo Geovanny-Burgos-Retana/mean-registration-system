@@ -24,6 +24,9 @@ export class ShowCurriculumComponent implements OnInit {
 
     str: String = " *  ";
 
+    /*
+        Cargar documento de malla para mostrar en pantalla
+    */
 	constructor(private router:Router, private carreraService:CarreraService, private recievedData: ActivatedRoute, private materiaService:MateriaService) { 
 		this.recievedData.queryParams.subscribe(params => {
             this.carrera = params["carrera"];
@@ -42,6 +45,9 @@ export class ShowCurriculumComponent implements OnInit {
 	ngOnInit() {
 	}
 
+    /*
+        -Cargar materia seleccionada para mostrar tabla de temas y subtemas
+    */
 	verMateria(materia:Materia) {
 		this.materia = materia;
 	}

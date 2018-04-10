@@ -25,6 +25,9 @@ export class UsersComponent implements OnInit {
 
     }
 
+    /*
+        -Redireccionar a editación de un usuario específico
+    */
 	editarUsuario(usuario:User) {		
 		const navigationExtras: NavigationExtras = {
             queryParams: {
@@ -42,6 +45,9 @@ export class UsersComponent implements OnInit {
     	this.router.navigate(['user-details'], navigationExtras);
 	}
 
+    /*
+        Eliminar un usuario localemte y en DB
+    */
 	eliminarUsuario(usuario:User) {		
 		this.usuarioService.deleteUsuario(usuario._id)
 			.subscribe(user => {

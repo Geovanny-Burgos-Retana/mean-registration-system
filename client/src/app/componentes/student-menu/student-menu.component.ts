@@ -56,6 +56,10 @@ export class StudentMenuComponent implements OnInit {
 
 	}
 
+    /*
+        *Aplica para los tres siguientes métodos
+        -Redireccionar a otro componente con una serie de datos necesarios en el componente de llegada
+    */
 	matricula() {        
 		const navigationExtras: NavigationExtras = {
             queryParams: {

@@ -51,6 +51,9 @@ export class ScoresComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	/*
+		-Actualizar notas localmente como también en DB y validar que la nota se valida
+	*/
 	actualizarNotas() {
 		var bandera:Number = 0;
 		try {
@@ -68,21 +71,19 @@ export class ScoresComponent implements OnInit {
 					bandera = 0;
 				}
 			}
-			console.log(this.evaluaciones);
 		} catch(err) {
 			alert(err);
 		}
 	}
 
+	/*
+		-Calcular nota de estudiante apartir de las notas en las asignaciones
+	*/
 	calcularNota(e:Evaluacion):Number {
 		var sum:number = 0;
-		console.log("Calculando nota", e);
 		for (var i = 0; i < e.asignaciones.length; ++i) {
 			sum += parseInt(e.asignaciones[i].nota.toString()) * parseFloat(this.curso.asignaciones[i].porcentaje.toString());
-			console.log(parseInt(e.asignaciones[i].nota.toString()));
-			console.log(parseInt(this.curso.asignaciones[i].porcentaje.toString()));
 		}
-		console.log(sum);
 		return sum;
 	}
 

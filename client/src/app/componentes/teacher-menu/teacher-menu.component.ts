@@ -48,6 +48,10 @@ export class TeacherMenuComponent implements OnInit {
 	ngOnInit() {
 	}
 
+    /*
+        *Aplica para los cinco siguientes métodos
+        -Redireccionar a otro componente con una serie de datos necesarios en el componente de llegada
+    */
 	malla() {
 		this.router.navigate(['curriculums']);
 	}

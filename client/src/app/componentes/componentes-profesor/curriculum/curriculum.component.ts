@@ -58,6 +58,9 @@ export class CurriculumComponent implements OnInit {
         this.materiasEliminadas = [];
 	}
 
+    /*
+        -Agregar materia a malla selecionada
+    */
 	agregarMateria() {
     	if (this.materia != '') {
 			var materia:Materia = {
@@ -71,6 +74,9 @@ export class CurriculumComponent implements OnInit {
     	}
     }
 
+    /*
+        -Eliminar materia a malla selecionada
+    */
     eliminarMateria(materia: String) {
       	for(let i = 0; i < this.carrera.materias.length; i++) {
 	        if(this.carrera.materias[i] == materia){
@@ -86,12 +92,18 @@ export class CurriculumComponent implements OnInit {
         console.log(this.materias);
     }
 
+    /*
+        -Asignar lista temas del materia selecionada para agregar y eliminar
+    */
     editarMateria(materia: Materia) {
         this.materiaSeleccionada = materia;
         this.temas = materia.temas;
         console.log(this.materias);
     }
 
+    /*
+        -Agregar tema de materia selecionada
+    */
     agregarTema() {
         if (this.tema != '') {
             var tema:Tema = {
@@ -104,6 +116,9 @@ export class CurriculumComponent implements OnInit {
         }
     }
 
+    /*
+        -Eliminar tema de materia selecionada
+    */
     eliminarTema(tema:Tema) {
         for(let i = 0; i < this.temas.length; i++) {
             if(this.temas[i].nombre == tema.nombre){
@@ -112,11 +127,17 @@ export class CurriculumComponent implements OnInit {
         }
     }
 
+    /*
+        -Asignar lista subtemas del tema selecionado para agregar y eliminar
+    */
     editarTema(tema: Tema) {
         this.subtemas = tema.subtemas;
         this.temaSeleccionado = tema.nombre;
     }
 
+    /*
+        -Agregar subtema de tema selecionado
+    */
     agregarSubtema() {
         if (this.subtema != '') {
             this.subtemas.push(this.subtema);
@@ -124,6 +145,9 @@ export class CurriculumComponent implements OnInit {
         }
     }
 
+    /*
+        -Eliminar subtema de tema selecionado
+    */
     eliminarSubtema(subtema: String) {
         for(let i = 0; i < this.subtemas.length; i++) {
             if(this.subtemas[i] == subtema){

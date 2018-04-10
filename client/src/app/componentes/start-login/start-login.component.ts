@@ -22,10 +22,12 @@ export class StartLoginComponent implements OnInit {
 		
 	}
 
+	/*
+		-Validar credenciales y redireccinar según tipo con el paso de datos del usuario
+	*/
 	iniciarSecion(){
 		this.usuarioService.readUsuario(this.usuario, this.contrasenia)
 			.subscribe(user => {
-				console.log(user);
 				if (user != null) {
 					const navigationExtras: NavigationExtras = {
 			            queryParams: {
@@ -48,6 +50,9 @@ export class StartLoginComponent implements OnInit {
 			});
 	}
 
+	/*
+		-Redireccionar para registro de un usuario
+	*/
 	registrarUsuario(){
 		this.router.navigate(['registrar-usuario']);		
   	}

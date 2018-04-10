@@ -45,6 +45,9 @@ export class AssistanceComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	/*
+		-Actualizacion de asistencias localmente como también en la DB
+	*/
 	actualizarNotas() {		
 		try {
 			var fecha = new Date(this.fecha.toString());
@@ -64,6 +67,9 @@ export class AssistanceComponent implements OnInit {
 		}
 	}
 
+	/*
+		-Generar los documentos nuevos para las asistencia de la fecha ingresada
+	*/
 	cargarFecha() {
 		this.asistenciasTemp = [];
 		var date:Date = new Date(this.fecha.toString());
@@ -95,6 +101,9 @@ export class AssistanceComponent implements OnInit {
 		}
 	}
 
+	/*
+		-Cambiar el estado de presencia de un estudiante
+	*/
 	cambiarPresencia(a: Asistencia) {
 		a.asistencias[0].presente = !a.asistencias[0].presente;
 		console.log(a);

@@ -35,6 +35,9 @@ export class ShowGroupTeacherComponent implements OnInit {
 			});
 	}
 
+	/*
+		-Guardar mensaje de foro localmente y en DB
+	*/
 	nuevoMensaje() {
 		var msg:Mensaje = {
 			idGrupo: this.idGrupo,
@@ -49,6 +52,9 @@ export class ShowGroupTeacherComponent implements OnInit {
 			});
 	}
 
+	/*
+		-Redireccionar a evaluaciones del grupo
+	*/
 	evaluaciones() {
 		const navigationExtras: NavigationExtras = {
             queryParams: {
@@ -58,6 +64,9 @@ export class ShowGroupTeacherComponent implements OnInit {
         this.router.navigate(['scores'], navigationExtras);
 	}
 
+	/*
+		-Redireccionar a asistencia del grupo
+	*/
 	asistencia() {
 		const navigationExtras: NavigationExtras = {
             queryParams: {

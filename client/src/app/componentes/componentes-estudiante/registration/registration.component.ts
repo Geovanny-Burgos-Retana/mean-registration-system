@@ -51,6 +51,9 @@ export class RegistrationComponent implements OnInit {
         this.cargarCursosMatriculados();
 	}
 
+    /*
+        -Validar estado de matricula del estudiante
+    */
 	agregarEstudiante_Curso(curso: Curso) {
     	if (curso.isRegistration) {
     		this.desmatricular(curso);
@@ -60,6 +63,9 @@ export class RegistrationComponent implements OnInit {
     	}
   	}
 
+    /*
+        -Cargar cursos que puede matricular el estudiante
+    */
   	cargarCursos(){
   		this.courseService.readGrupos()
   		.subscribe(courses => {
@@ -67,6 +73,9 @@ export class RegistrationComponent implements OnInit {
   		});	      
   	}
 
+    /*
+        -Cargar cursos matriculados para mostrarlos como matriculados
+    */
   	cargarCursosMatriculados() {
   		this.courseService.readCourseStudent(this.user.carnet)
   			.subscribe(courses => {
@@ -81,6 +90,9 @@ export class RegistrationComponent implements OnInit {
   			});
   	}
 
+    /*
+        -Desmatricular al estudiante del curso y eliminar documentos generados para su evaluacion y asistencia
+    */
   	desmatricular(curso: Curso){
   		for (var i = 0; i < curso.estudiantes.length; ++i) {
   			if (curso.estudiantes[i] == this.user.carnet) {
@@ -97,6 +109,9 @@ export class RegistrationComponent implements OnInit {
   		this.courseService.updateGrupo(curso).subscribe();
   	}
 
+    /*
+        -Matricular estudiante a curso y crear documentos para el control de evaluaciones y asistencia
+    */
   	matricular(curso: Curso){
         if (this.esCursoMatriculado(curso.nombre)) {
             alert("Curso matriculado en otro grupo");
@@ -133,6 +148,9 @@ export class RegistrationComponent implements OnInit {
         }    	
   	}
 
+    /*
+        -Validación de curso para no matricular en mismo curso en dos grupos
+    */
     esCursoMatriculado(nombreCurso: String) {
         for (var i = 0; i < this.cursosMatriculados.length;     ++i) {
             if (this.cursosMatriculados[i] == nombreCurso) {

@@ -37,6 +37,9 @@ export class ShowGroupComponent implements OnInit {
 			});
 	}
 
+	/*
+		-Crear objecto mensaje para guardarlo en la DB
+	*/
 	nuevoMensaje() {
 		var msg:Mensaje = {
 			idGrupo: this.idGrupo,
@@ -51,6 +54,9 @@ export class ShowGroupComponent implements OnInit {
 			});
 	}
 
+	/*
+		-Redireccionar con parametros a las evaluaciones del curso
+	*/
 	evaluaciones() {
 		const navigationExtras: NavigationExtras = {
             queryParams: {
@@ -62,6 +68,9 @@ export class ShowGroupComponent implements OnInit {
         this.router.navigate(['show-scores'], navigationExtras);
 	}
 
+	/*
+		-Redireccionar con parametros a la asistencia del curso
+	*/
 	asistencia() {
 		const navigationExtras: NavigationExtras = {
             queryParams: {

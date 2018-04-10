@@ -31,6 +31,9 @@ export class RegisterComponent implements OnInit {
 	
 	}
 
+	/*
+		-Crear usuario y validar su tipo para dependiendo validar o generar la universidad, escuela y carrera ingresada
+	*/
 	registrarUsuario() {
 		if (this.usuario != '' && this.contrasenia != '' && this.universidad != '' && this.escuela != '' && this.nombre != '' && this.carnet != '') {
 			const usuarioNuevo:User = {
@@ -54,7 +57,9 @@ export class RegisterComponent implements OnInit {
 		}		
 	}
 
-	//Se hace validaciones para registrar estudiante
+	/*
+		-Se valida la universidad ingresada para el caso que el tipo sea estudiante
+	*/
 	registrarEstudiante(usuarioNuevo: User) {
 		usuarioNuevo.carrera = this.carrera;
 		this.universidadService.readUniversidadEscuela(this.universidad, this.escuela)
@@ -67,6 +72,9 @@ export class RegisterComponent implements OnInit {
 		});
 	}
 
+	/*
+		-Validar la carrera del usuario y crearlo 
+	*/
 	validarCarrera(usuarioNuevo: User){
 		this.carreraService.readMalla(this.carrera)
 		.subscribe(carrera => {
@@ -87,16 +95,18 @@ export class RegisterComponent implements OnInit {
 		
 	}
 
+	/*
+		-Validar si la universidad existe sino se crea en el caso de registra un profesor
+	*/
 	registrarProfesor(usuarioNuevo: User) {
 		this.universidadService.readUniversidadEscuela(this.universidad, this.escuela)
 		.subscribe(universidad => {
-			console.log(universidad);
 			if (universidad == null) {
 				const universidadNueva:Universidad = {
 					nombre: this.universidad,
 					escuelas: [this.escuela]
 				}
-				this.universidadService.createUniversidad(universidadNueva).subscribe();				
+				this.universidadService.createUniversidad(universidadNueva).subscribe();
 			}
 		});
 		this.usuarioService.createUsuario(usuarioNuevo)
